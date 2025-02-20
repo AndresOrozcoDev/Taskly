@@ -7,6 +7,14 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 - **Admin** pueden administrar todas las tareas del sistema.
 - **User** pueden administrar sus propias tareas.
 
+## Despliegue
+
+- **Frontends:** Desplegados en **Netlify**.
+  - [Portal]()
+- **Backends:** Desplegados en **Render**.
+  - [Servicios Web Usuarios]()
+  - [Servicios Web Tareas]()
+  
 ## Estructura del proyecto
 
 ### **Angular**
