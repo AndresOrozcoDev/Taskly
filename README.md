@@ -14,7 +14,7 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 - **Backends:** Desplegados en **Render**.
   - [Servicios Web Usuarios]()
   - [Servicios Web Tareas]()
-  
+
 ## Estructura del proyecto
 
 ### **Angular**
@@ -69,6 +69,24 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
   - `user_email` (`TEXT`, clave foránea) – Correo electrónico del usuario que creó la tarea.
   - `status` (`TEXT`, no nulo) – Estado de la tarea "pendiente", "en progreso", "completada".
   - `created` (`DATETIME`, no nulo) – Fecha y hora de creación de la tarea.
+
+## Ejecución Local
+
+### Ejecución Individual
+
+Cada carpeta en el directorio raíz (`angular`, `express`, `fastapi`) contiene un README con instrucciones detalladas y comandos para configurar y ejecutar cada parte del proyecto localmente.
+
+### Ejecución con Docker Compose
+
+Para ejecutar todos los proyectos de forma paralela:
+1. Asegúrate de tener instalado [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+2. Ejecuta el siguiente comando desde la raíz del proyecto:
+
+```bash
+    docker-compose up
+```
+
+Esto iniciará todos los servicios (frontends y backends) en contenedores Docker.
 
 ## Extra
 
