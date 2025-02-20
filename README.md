@@ -64,7 +64,9 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 
 ## Extra
 
-Ambas base de datos seran independientes segun sus funcionalidades, Express con la autenticación y FastAPI con la gestion de tareas, para crear la validacion de que una tarea si sea creada por un usuario registrado se creara un servicio HTTP desde Express para validar en la tabla user que si exista el `email` respondiendo a FastAPI y poderla crear.
+Las bases de datos de Express y FastAPI son independientes y se utilizan según sus respectivas funcionalidades: Express maneja la autenticación de usuarios, mientras que FastAPI gestiona las tareas.
+
+Para garantizar que una tarea solo pueda ser creada por un usuario registrado, FastAPI realizará una solicitud HTTP a Express para verificar en la tabla `user` si el `email` existe. Si el usuario es válido, la tarea se creará exitosamente.
 
 
 ## Autor
