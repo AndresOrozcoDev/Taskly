@@ -62,6 +62,10 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
   - `status` (`TEXT`, no nulo) – Estado de la tarea "pendiente", "en progreso", "completada".
   - `created` (`DATETIME`, no nulo) – Fecha y hora de creación de la tarea.
 
+## Extra
+
+Ambas base de datos seran independientes segun sus funcionalidades, Express con la autenticación y FastAPI con la gestion de tareas, para crear la validacion de que una tarea si sea creada por un usuario registrado se creara un servicio HTTP desde Express para validar en la tabla user que si exista el `email` respondiendo a FastAPI y poderla crear.
+
 
 ## Autor
 
