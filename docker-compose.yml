@@ -1,0 +1,37 @@
+services:
+  express-app:
+    build:
+      context: ./taskly-express
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    container_name: express-container
+    image: express-image:latest
+    networks:
+      - app-network
+
+  fastapi-app:
+    build:
+      context: ./taskly-fastapi
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    container_name: fastapi-container
+    image: fastapi-image:latest
+    networks:
+      - app-network
+
+  angular-app:
+    build:
+      context: ./taskly-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    container_name: angular-container
+    image: angular-image:latest
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
