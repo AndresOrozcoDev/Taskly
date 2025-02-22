@@ -1,59 +1,52 @@
-# TasklyFrontend
+# Taskly Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
+Este proyecto fue generado usando [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8 para crear la interfaz de una aplicacion web que gestiona las tareas de un usuario dependiendo de su rol.
 
-## Development server
 
-To start a local development server, run:
+## Construido
 
+En esta sección se mostrara las herramientas o frameworks utilizados:
+
+* [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
+* [![Angular](https://img.shields.io/badge/Angular-%23DD0031.svg?logo=angular&logoColor=white)](#)
+* [![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=fff)](#)
+* [![Less](https://img.shields.io/badge/Less-1D365D?logo=less&logoColor=fff)](#)
+* [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff)](#)
+
+## Demo
+
+Aquí está el enlace para visualizar el demo: [Portal de administrador](https://incomparable-gumdrop-472cf6.netlify.app/)
+
+## Ejecucion de desarrollo
+
+Instalacion de dependencias
+```bash
+npm i
+```
+
+Crear el servidor
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Andamio de codigo
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
+Despliegue
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+Pruebas unitarias
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Autor
 
-```bash
-ng e2e
-```
+**Andrés Orozco**
+- [GitHub](https://github.com/AndresOrozcoDev)
+- [LinkedIn](https://www.linkedin.com/in/andresorozcodev/)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
