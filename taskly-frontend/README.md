@@ -29,6 +29,18 @@ Crear el servidor
 ng serve
 ```
 
+## Ejecucion con Docker
+
+Creación del contenedor
+```bash
+docker build -t <name> .
+```
+
+Ejecución del contenedor
+```bash
+docker run -p 4200:80 <name_container>
+```
+
 ## Andamio de codigo
 
 Despliegue
