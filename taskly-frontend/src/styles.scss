@@ -18,14 +18,13 @@ body {
 }
 
 @font-face {
-    font-family: 'Outfit';
-    src: url('/assets/fonts/Outfit/Outfit-Regular.ttf') format('truetype');
-    font-weight: 400;
+    font-family: 'Poppins';
+    src: url('./assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
     font-display: swap;
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins' !important;
 }
 
 // Typographic

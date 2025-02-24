@@ -24,6 +24,7 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 - **Adaptable:** Diseño responsive a cualquier pantalla.
 - **Notificaciones:** Mensajes de exito y error.
 - **Pruebas unitarias:** Verificacion de codigo.
+- **Template:** Basado gran parte en el template [Colorlib](https://colorlib.com/polygon/adminator/index.html).
 
 ### **Express**
 
