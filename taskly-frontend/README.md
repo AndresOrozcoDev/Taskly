@@ -15,7 +15,7 @@ En esta sección se mostrara las herramientas o frameworks utilizados:
 
 ## Demo
 
-Aquí está el enlace para visualizar el demo: [Portal de administrador](https://incomparable-gumdrop-472cf6.netlify.app/)
+Aquí está el enlace para visualizar el demo: [Taskly]().
 
 ## Ejecucion de desarrollo
 
