@@ -1,8 +1,10 @@
 :root {
     --white-color: #FFF;
     --black-color: #000;
-    --border-radius: 8px;
+    --blue-color: #2196f3;
     --bg-grey-color: #f9fafb;
+    --bg-grey-dark-color: #e7e7e7;
+    --border-radius: 0.4rem;
 }
 
 * {
@@ -25,6 +27,63 @@ body {
 
 body {
     font-family: 'Poppins' !important;
+}
+
+// Button
+.custom-btn {
+    
+}
+
+// Form
+.form-group {
+    width: 100%;
+
+    input[type="text"],
+    input[type="password"] {
+        @extend .text;
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        color: var(--black-color);
+        border-radius: var(--border-radius);
+        background-color: var(--white-color);
+        border: 1px solid var(--bg-grey-dark-color);
+
+        &:focus {
+            outline: 0px;
+            box-shadow: 0 0 0 0.25rem rgba(33, 150, 243, 0.25);
+            ;
+        }
+    }
+}
+
+// Input
+input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid var(--bg-grey-dark-color);
+    border-radius: 50%;
+    background-color: white;
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:checked {
+        position: relative;
+        border-color: var(--blue-color);
+        background-color: var(--blue-color);
+    }
+
+    /* Agregar un "✔" cuando está marcado */
+    &:checked::after {
+        content: "✔";
+        color: var(--white-color);
+        font-size: 12px;
+        display: block;
+        text-align: center;
+    }
 }
 
 // Typographic
@@ -50,4 +109,8 @@ $line-height-small: 1.4;
 .text--small {
     font-size: $font-size-small;
     line-height: $line-height-small;
+}
+
+label {
+    @extend .text;
 }
