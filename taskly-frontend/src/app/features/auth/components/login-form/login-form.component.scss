@@ -1,0 +1,11 @@
+.form {
+    &__opts {
+        margin-block: 1rem !important;
+        p {
+            a {
+                text-decoration: underline !important;
+                color: var(--blue-color) !important;
+            }
+        }
+    }
+}

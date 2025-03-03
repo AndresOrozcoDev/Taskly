@@ -53,6 +53,10 @@ Pruebas unitarias
 ng test
 ```
 
+## Libreria de iconos
+
+Esta incluida `lucid-react` como libreria de iconos por su buena documentación, ligero peso, variedad en recursos y compatibilidad con Angular, para la [docuemntación](https://lucide.dev/guide/packages/lucide-angular) y visualizar los [Iconos](https://lucide.dev/icons/).
+
 ---
 
 ## Autor

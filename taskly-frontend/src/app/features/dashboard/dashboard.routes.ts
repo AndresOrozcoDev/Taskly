@@ -1,5 +1,14 @@
 import { Routes } from '@angular/router';
+import { TaskComponent } from './components/task/task.component';
+import { TestComponent } from './components/test/test.component';
+import { HomeComponent } from './pages/home/home.component';
 
 export const DASHBOARD_ROUTES: Routes = [
-  { path: '', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) },
+  {
+    path: '', component: HomeComponent,
+    children: [
+      { path: 'tasks', component: TaskComponent, outlet: 'dashboard' },
+      { path: 'test', component: TestComponent, outlet: 'dashboard' }
+    ]
+  },
 ];

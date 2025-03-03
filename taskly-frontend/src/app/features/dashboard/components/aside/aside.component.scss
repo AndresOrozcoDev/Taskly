@@ -10,41 +10,43 @@
     overflow: hidden;
     transition: width 0.3s;
 
-    &.open, &:hover {
+    &.open,
+    &:hover {
         width: 200px;
 
         .aside-menu {
             ul {
                 li {
                     justify-content: start;
-                    p {
-                        display: block;
-                        padding-left: 0.5rem;
+                    a {
+                        p {
+                            display: block;
+                            padding-left: 0.5rem;
+                        }
                     }
                 }
             }
         }
     }
-    
+
     .aside-menu {
         padding-top: 20px;
-    
         ul {
             list-style: none;
             padding: 0;
-    
             li {
                 padding: 1rem;
                 cursor: pointer;
                 color: var(--black-color) !important;
                 display: block;
                 justify-content: center;
-    
-                p {
-                    display: none;
+                text-decoration: none;
+                a {
+                    p {
+                        display: none;
+                    }
                 }
             }
         }
     }
 }
-
