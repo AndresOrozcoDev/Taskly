@@ -1,0 +1,50 @@
+.aside-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 50px;
+    background: var(--white-color);
+    color: var(--black-color);
+    border-right: 1px solid var(--bg-grey-dark-color);
+    overflow: hidden;
+    transition: width 0.3s;
+
+    &.open, &:hover {
+        width: 200px;
+
+        .aside-menu {
+            ul {
+                li {
+                    justify-content: start;
+                    p {
+                        display: block;
+                        padding-left: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+    
+    .aside-menu {
+        padding-top: 20px;
+    
+        ul {
+            list-style: none;
+            padding: 0;
+    
+            li {
+                padding: 1rem;
+                cursor: pointer;
+                color: var(--black-color) !important;
+                display: block;
+                justify-content: center;
+    
+                p {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+

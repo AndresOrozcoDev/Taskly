@@ -1,0 +1,14 @@
+<div class="aside-container" [class.open]="isOpen" (mouseleave)="isOpen = false">
+  <nav class="aside-menu">
+    <ul>
+      <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleMenu()">
+        <i class="bi bi-list"></i>
+        <p>Menu</p>
+      </li>
+      <li class="menu-toggle d-flex flex-row align-items-center">
+        <i class="bi bi-table"></i>
+        <p>Tasks</p>
+      </li>
+    </ul>
+  </nav>
+</div>
