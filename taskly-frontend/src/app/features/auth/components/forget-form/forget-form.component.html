@@ -1,9 +1,10 @@
 <form class="form col-12 col-md-4 w-100 h-100 p-5" [formGroup]="forgetForm" (ngSubmit)="onSend()">
     <p class="title mb-4">Forget password</p>
-    <div class="form-group w-100 mb-4">
+    <div class="form-group w-100 mb-1">
         <label class="mb-2" for="email">Email</label>
         <input type="text" id="email" formControlName="email" placeholder="John Doe" autocomplete="off">
     </div>
+    <p *ngIf="submitted && forgetForm.invalid" class="text--xs text--error">Invalid form!</p>
     <div class="d-flex w-100 justify-content-start">
         <input type="submit" class="btn btn-primary" value="Send email">
     </div>

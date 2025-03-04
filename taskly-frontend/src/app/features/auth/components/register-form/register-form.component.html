@@ -8,10 +8,11 @@
         <label class="mb-2" for="password">Password</label>
         <input type="password" id="password" formControlName="password" placeholder="Password">
     </div>
-    <div class="form-group w-100 mb-4">
+    <div class="form-group w-100 mb-1">
         <label class="mb-2" for="retry-password">Confirm password</label>
         <input type="password" id="retry-password" formControlName="retryPassword" placeholder="Password">
     </div>
+    <p *ngIf="submitted && forgetForm.invalid" class="text--xs text--error">Invalid form!</p>
     <div class="d-flex w-100 justify-content-start">
         <input type="submit" class="btn btn-primary" value="Register">
     </div>

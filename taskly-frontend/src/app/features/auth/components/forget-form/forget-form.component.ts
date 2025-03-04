@@ -12,6 +12,7 @@ export class ForgetFormComponent {
 
   constructor(private router: Router) { }
 
+  submitted = false;
   forgetForm = new FormGroup({
     email: new FormControl('', Validators.required),
   });
@@ -21,6 +22,7 @@ export class ForgetFormComponent {
       console.info(this.forgetForm.value);
       this.router.navigate(['/home']);
     } else {
+      this.submitted = true;
       console.error('Empty form!');
     }
   }

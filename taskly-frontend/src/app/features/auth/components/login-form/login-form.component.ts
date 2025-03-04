@@ -1,14 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
 })
 export class LoginFormComponent {
+
+  submitted = false;
 
   constructor(private router: Router) { }
 
@@ -22,6 +25,7 @@ export class LoginFormComponent {
       console.info(this.loginForm.value);
       this.router.navigate(['/home']);
     } else {
+      this.submitted = true;
       console.error('Empty form!');
     }
   }

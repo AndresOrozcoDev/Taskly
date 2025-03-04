@@ -92,6 +92,7 @@ input[type="checkbox"] {
 $font-size-h2: 20px;
 $font-size-p: 16px;
 $font-size-small: 14px;
+$font-size-xs: 12px;
 
 $line-height-h2: 1.3;
 $line-height-p: 1.5;
@@ -106,11 +107,20 @@ $line-height-small: 1.4;
 .text {
     font-size: $font-size-p;
     line-height: $line-height-p;
-}
 
-.text--small {
-    font-size: $font-size-small;
-    line-height: $line-height-small;
+    &--small {
+        font-size: $font-size-small;
+        line-height: $line-height-small;
+    }
+
+    &--xs {
+        font-size: $font-size-xs;
+        line-height: $line-height-small;
+    }
+
+    &--error {
+        color: red
+    }
 }
 
 label {

@@ -10,6 +10,8 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class RegisterFormComponent {
 
+  submitted = false;
+
   constructor(private router: Router) { }
 
   registerForm = new FormGroup({
@@ -23,6 +25,7 @@ export class RegisterFormComponent {
       console.info(this.registerForm.value);
       this.router.navigate(['/home']);
     } else {
+      this.submitted = true;
       console.error('Empty form!');
     }
   }
