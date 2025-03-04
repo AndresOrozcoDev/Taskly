@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { LucideAngularModule, Archive } from 'lucide-angular';
+import { Router, RouterModule } from '@angular/router';
+import { LucideAngularModule, Archive, Sun, LogOut, AlignJustify } from 'lucide-angular';
 
 @Component({
   selector: 'app-aside',
@@ -10,9 +10,20 @@ import { LucideAngularModule, Archive } from 'lucide-angular';
 })
 export class AsideComponent {
   isOpen = false;
-  readonly archive = Archive;
+  readonly icons = {
+    archive: Archive,
+    sun: Sun,
+    logOut: LogOut,
+    menu: AlignJustify
+  };
+
+  constructor(private router: Router) { }
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
+  }
+
+  logout() {
+    this.router.navigate(['/']);
   }
 }

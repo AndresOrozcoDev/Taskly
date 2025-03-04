@@ -9,42 +9,55 @@
     border-right: 1px solid var(--bg-grey-dark-color);
     overflow: hidden;
     z-index: 2;
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-    &.open,
-    &:hover {
+    &.open, &:hover {
         width: 200px;
 
-        .aside-menu {
-            ul {
-                li {
-                    justify-content: start;
-                    a {
-                        p {
-                            display: block;
-                            padding-left: 0.5rem;
-                        }
-                    }
+        .up-menu {
+            ul li {
+                justify-content: start;
+
+                a p {
+                    display: block;
+                    padding-left: 0.5rem;
+                }
+            }
+        }
+
+        .down-menu {
+            ul li {
+                justify-content: end;
+
+                a p {
+                    display: block;
+                    padding-right: 0.5rem;
                 }
             }
         }
     }
 
-    .aside-menu {
+    .up-menu, .down-menu {
         padding-top: 20px;
+        padding-bottom: 20px;
+
         ul {
             list-style: none;
             padding: 0;
+
             li {
                 padding: 1rem;
                 cursor: pointer;
-                color: var(--black-color) !important;
+                color: var(--black-color);
                 display: block;
                 justify-content: center;
                 text-decoration: none;
-                a {
-                    p {
-                        display: none;
-                    }
+
+                a p {
+                    display: none;
                 }
             }
         }
