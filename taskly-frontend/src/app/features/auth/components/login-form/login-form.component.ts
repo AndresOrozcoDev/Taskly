@@ -19,6 +19,7 @@ export class LoginFormComponent {
 
   onLogin() {
     if (this.loginForm.valid) {
+      console.info(this.loginForm.value);
       this.router.navigate(['/home']);
     } else {
       console.error('Empty form!');

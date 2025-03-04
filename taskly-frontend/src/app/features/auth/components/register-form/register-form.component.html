@@ -1,18 +1,18 @@
-<form class="col-12 col-md-4 w-100 h-100 p-5">
+<form class="col-12 col-md-4 w-100 h-100 p-5" [formGroup]="registerForm" (ngSubmit)="onRegister()">
     <p class="title mb-4">Register</p>
     <div class="form-group w-100 mb-4">
-        <label class="mb-2" for="username">Username</label>
-        <input type="text" id="username" placeholder="John Doe" autocomplete="off">
+        <label class="mb-2" for="username">Email</label>
+        <input type="text" id="username" formControlName="email" placeholder="John Doe" autocomplete="off">
     </div>
     <div class="form-group w-100 mb-4">
         <label class="mb-2" for="password">Password</label>
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" id="password" formControlName="password" placeholder="Password">
     </div>
     <div class="form-group w-100 mb-4">
         <label class="mb-2" for="retry-password">Confirm password</label>
-        <input type="password" id="retry-password" placeholder="Password">
+        <input type="password" id="retry-password" formControlName="retryPassword" placeholder="Password">
     </div>
     <div class="d-flex w-100 justify-content-start">
-        <input type="submit" class="btn btn-primary" value="Login">
+        <input type="submit" class="btn btn-primary" value="Register">
     </div>
 </form>

@@ -7,8 +7,9 @@ export const DASHBOARD_ROUTES: Routes = [
   {
     path: '', component: HomeComponent,
     children: [
+      { path: '', redirectTo: 'tasks', pathMatch: 'full' },
       { path: 'tasks', component: TaskComponent, outlet: 'dashboard' },
       { path: 'test', component: TestComponent, outlet: 'dashboard' }
-    ]
+    ], 
   },
 ];

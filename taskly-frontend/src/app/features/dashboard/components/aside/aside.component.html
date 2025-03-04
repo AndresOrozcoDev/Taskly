@@ -2,19 +2,19 @@
   <nav class="aside-menu">
     <ul>
       <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleMenu()">
-        <a class="d-flex flex-row align-items-center" href="/home">
+        <a class="d-flex flex-row" href="/home">
           <lucide-angular [img]="archive" class="my-icon"></lucide-angular>
           <p>Menu</p>
         </a>
       </li>
-      <li class="menu-toggle">
-        <a class="d-flex flex-row align-items-center" href="" [routerLink]="['/home', { outlets: { dashboard: ['tasks'] } }]">
+      <li class="menu-toggle d-flex flex-row align-items-center">
+        <a class="d-flex flex-rowr" href="" [routerLink]="['/home', { outlets: { dashboard: ['tasks'] } }]">
           <lucide-angular [img]="archive" class="my-icon"></lucide-angular>
           <p>Tasks</p>
         </a>
       </li>
-      <li class="menu-toggle">
-        <a class="d-flex flex-row align-items-center" href="" [routerLink]="['/home', { outlets: { dashboard: ['test'] } }]">
+      <li class="menu-toggle d-flex flex-row align-items-center">
+        <a class="d-flex flex-row" href="" [routerLink]="['/home', { outlets: { dashboard: ['test'] } }]">
           <lucide-angular [img]="archive" class="my-icon"></lucide-angular>
           <p>Test</p>
         </a>

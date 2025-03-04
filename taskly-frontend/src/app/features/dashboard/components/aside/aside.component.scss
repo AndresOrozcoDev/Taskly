@@ -8,7 +8,7 @@
     color: var(--black-color);
     border-right: 1px solid var(--bg-grey-dark-color);
     overflow: hidden;
-    transition: width 0.3s;
+    z-index: 2;
 
     &.open,
     &:hover {
