@@ -5,7 +5,7 @@ from fastapi import FastAPI
 
 from app.core.database import engine, Base
 from app.core.config import Configs
-from app.api.vi.routes import api_router
+from app.api.v1.routes import api_router
 
 configs = Configs()
 
