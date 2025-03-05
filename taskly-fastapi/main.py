@@ -5,6 +5,7 @@ from fastapi import FastAPI
 
 from app.core.database import engine, Base
 from app.core.config import Configs
+from app.api.vi.routes import api_router
 
 configs = Configs()
 
@@ -35,6 +36,7 @@ app = FastAPI(
     ],
 )
 
+app.include_router(api_router)
 Base.metadata.create_all(bind=engine)
 
 if __name__ == "__main__":
