@@ -12,8 +12,8 @@
         <label class="mb-2" for="retry-password">Confirm password</label>
         <input type="password" id="retry-password" formControlName="retryPassword" placeholder="Password">
     </div>
-    <p *ngIf="submitted && forgetForm.invalid" class="text--xs text--error">Invalid form!</p>
-    <div class="d-flex w-100 justify-content-start">
+    <p *ngIf="submitted && registerForm.invalid" class="text--xs text--error">Invalid form!</p>
+    <div class="d-flex w-100 justify-content-end mt-3">
         <input type="submit" class="btn btn-primary" value="Register">
     </div>
 </form>

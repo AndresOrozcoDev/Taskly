@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { LucideAngularModule, Archive, Sun, LogOut, AlignJustify } from 'lucide-angular';
+import { LucideAngularModule, Archive, Sun, LogOut, AlignJustify, CircleUserRound } from 'lucide-angular';
 
 @Component({
   selector: 'app-aside',
@@ -14,7 +14,8 @@ export class AsideComponent {
     archive: Archive,
     sun: Sun,
     logOut: LogOut,
-    menu: AlignJustify
+    menu: AlignJustify,
+    profile: CircleUserRound
   };
 
   constructor(private router: Router) { }
