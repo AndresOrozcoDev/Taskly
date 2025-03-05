@@ -4,7 +4,7 @@ services:
       context: ./taskly-express
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
+      - "3000:3000"
     container_name: express-container
     image: express-image:latest
     networks:
