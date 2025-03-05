@@ -3,10 +3,11 @@ import uvicorn
 
 from fastapi import FastAPI
 
-# Variables de entorno
-PORT_FASTAPI = int(os.getenv("PORT_FASTAPI", 8000))
+from app.core.database import engine, Base
+from app.core.config import Configs
 
-# Configuracion de Swagger
+configs = Configs()
+
 app = FastAPI(
     title='Task API',
     description='Documentación generada con Swagger para una aplicacion de FastAPI sobre la gestion de tareas.',
@@ -18,7 +19,7 @@ app = FastAPI(
     },
     servers=[
         {
-            "url": f"http://localhost:{PORT_FASTAPI}",
+            "url": f"http://localhost:{configs.PORT_FASTAPI}",
             "description": "Local server",
         },
         {
@@ -34,7 +35,7 @@ app = FastAPI(
     ],
 )
 
-# Ejecución de la aplicación
+Base.metadata.create_all(bind=engine)
+
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", PORT_FASTAPI))
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
+    uvicorn.run("main:app", host="0.0.0.0", port=configs.PORT_FASTAPI)

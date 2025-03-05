@@ -30,6 +30,7 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 
 - **Gestion de autenticación:** Crear, editar y eliminar usuarios.
 - **Almacenamiento:** Con base de datos SQLite3.
+- **Arquitectura:** Con arquitectura monolito.
 - **Comunicación:** Con REST.
 - **Proteccion:** Por jsonwebtoken y bcrypt.
 - **Respuestas:** Con el codigo de estado y mensaje descriptivo.
@@ -54,6 +55,7 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 
 - **Gestion de tareas por usuarios:** Crear, editar y eliminar tareas.
 - **Almacenamiento:** Con base de datos SQLite3.
+- **Arquitectura:** Con arquitectura monolito.
 - **Comunicación:** Con REST.
 - **Proteccion:** Por header API_KEY.
 - **Respuestas:** Con el codigo de estado y mensaje descriptivo.
@@ -70,6 +72,7 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
   - `user_email` (`TEXT`, clave foránea) – Correo electrónico del usuario que creó la tarea.
   - `status` (`TEXT`, no nulo) – Estado de la tarea "pendiente", "en progreso", "completada".
   - `created` (`DATETIME`, no nulo) – Fecha y hora de creación de la tarea.
+  - `updated` (`DATETIME`, no nulo) – Fecha y hora de actualización de la tarea.
 
 ## Ejecución Local
 
