@@ -9,7 +9,7 @@ class User(Base):
     __tablename__ = 'users'
     
     email = Column(String, primary_key=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created = Column(DateTime, default=datetime.datetime.utcnow)
 
 class Task(Base):
     __tablename__ = 'tasks'
@@ -19,5 +19,5 @@ class Task(Base):
     user_email = Column(String, ForeignKey('users.email'))
     description = Column(String)
     status = Column(String, default="pending")
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    created = Column(DateTime, default=datetime.datetime.utcnow)
+    updated = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
