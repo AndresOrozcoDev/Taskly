@@ -7,6 +7,8 @@ var swaggerUi = require('swagger-ui-express');
 var swaggerSpec = require('./swaggerConfig');
 
 var indexRouter = require('./routes/index');
+var authRouter = require('./routes/auth');
+var officeRouter = require('./routes/office');
 
 var app = express();
 
@@ -28,6 +30,8 @@ app.get("/openapi.json", (req, res) => {
 });
 
 app.use('/', indexRouter);
+app.use('/v1/auth', authRouter);
+app.use('/v7/office', officeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
