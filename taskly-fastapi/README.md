@@ -25,6 +25,20 @@ env\Scripts\activate
 python main.py
 ```
 
+## Migraciones
+
+Cuando se realice un cambio estructural en la base de datos (agregar, editar o quitar columnas en las tablas) y se queria actualizar la base de datos sin perder los datos insertados alli, se debe migrar la base de datos con el siguiente comando de Alembic:
+
+```bash
+alembic revision --autogenerate -m "Agregando columna estado a tareas"
+```
+
+Para aplicar los cambios en mi base de datos `.sqlite` se requiere el siguiente comando:
+
+```bash
+alembic upgrade head
+```
+
 ## Andamio de codigo
 
 Instalar entorno virtual
