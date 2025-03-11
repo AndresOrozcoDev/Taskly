@@ -95,10 +95,12 @@ Esto iniciará todos los servicios (frontends y backends) en contenedores Docker
 
 ## Extra
 
-Las bases de datos de Express y FastAPI son independientes y se utilizan según sus respectivas funcionalidades: Express maneja la autenticación de usuarios, mientras que FastAPI gestiona las tareas.
+Las bases de datos de Express y FastAPI son **independientes** y se utilizan según sus respectivas funciones:
 
-Para garantizar que una tarea solo pueda ser creada por un usuario registrado, FastAPI realizará una solicitud HTTP a Express para verificar en la tabla `user` si el `email` existe. Si el usuario es válido, la tarea se creará exitosamente.
+- **Express** gestiona la autenticación de `user`.
+- **FastAPI** administra las `task`.
 
+Para asegurarse de que solo los usuarios registrados puedan crear tareas, FastAPI realizará una solicitud `HTTP` a Express para verificar si el email del usuario existe en la tabla user. Si el usuario es válido, la tarea se creará con éxito.
 
 ## Autor
 
