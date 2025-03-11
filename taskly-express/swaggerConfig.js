@@ -27,10 +27,14 @@ const options = {
       {
         name: 'Auth',
         description: 'Endpoints for managing authentication',
+      },
+      {
+        name: 'Office',
+        description: 'Endpoints for managing offices',
       }
     ],
   },
-  apis: ['./routes/*.js'],
+  apis: ['./routes/**/*.js'],
 };
 
 const swaggerSpec = swaggerJSDoc(options);

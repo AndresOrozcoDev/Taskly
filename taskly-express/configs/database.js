@@ -10,7 +10,8 @@ const db = new sqlite3.Database("./database.sqlite", (err) => {
 
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS office (
-        id INTEGER PRIMARY KEY AUTOINCREMENT
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL
     )`);
 
     db.run(`CREATE TABLE IF NOT EXISTS user (

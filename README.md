@@ -50,6 +50,7 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 - **Tabla `office`**  
   Almacena la información de las oficinas para comprobar que un admin si pertenece a una entidad.
   - `id` (`INTEGER`, clave primaria, autoincremental) – Identificador único de la oficina.
+  - `name` (`TEXT`, no nulo) - Nombre de la offica o lugar medico.
 
 ### **FastAPI**
 
