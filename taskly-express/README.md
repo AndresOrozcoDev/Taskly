@@ -40,6 +40,20 @@ Ejecución del contenedor
 docker run -p 4200:80 <name_container>
 ```
 
+## Migraciones
+
+Cuando se realice un cambio estructural en la base de datos (agregar, editar o quitar columnas en las tablas) y se queria actualizar la base de datos sin perder los datos insertados alli, se debe migrar la base de datos con el siguiente comando de Alembic:
+
+```bash
+npx knex migrate:make create_tables
+```
+
+Para aplicar los cambios en mi base de datos `.sqlite` se requiere el siguiente comando:
+
+```bash
+npx knex migrate:latest
+```
+
 ## Visualizador de la base de datos
 Puedes visualizar el archivo .sqlite con [SQLite Viewer](https://sqliteviewer.app/) subiendo el archivo.
 
