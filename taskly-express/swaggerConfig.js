@@ -26,11 +26,7 @@ const options = {
     tags: [
       {
         name: 'Auth',
-        description: 'Endpoints for managing authentication',
-      },
-      {
-        name: 'Office',
-        description: 'Endpoints for managing offices',
+        description: 'Endpoints for managing authentication.',
       }
     ],
   },

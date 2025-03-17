@@ -9,18 +9,11 @@ const db = new sqlite3.Database("./database.sqlite", (err) => {
 });
 
 db.serialize(() => {
-    db.run(`CREATE TABLE IF NOT EXISTS office (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL
-    )`);
-
     db.run(`CREATE TABLE IF NOT EXISTS user (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
-        rol TEXT NOT NULL,
-        office_id INTEGER NOT NULL,
-        FOREIGN KEY (office_id) REFERENCES office(id)
+        rol TEXT NOT NULL DEFAULT 'user'
     )`);
 });
 

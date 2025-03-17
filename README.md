@@ -45,12 +45,6 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
   - `email` (`TEXT`, único, no nulo) – Correo electrónico del usuario.
   - `password` (`TEXT`, no nulo) – Contraseña encriptada del usuario.
   - `rol` (`TEXT`, no nulo) – Rol del usuario en el sistema (ejemplo: "admin", "usuario").
-  - `office_id` (`INTEGER`, no nulo) – Identificador unico de la oficina en caso de ser admin.
-
-- **Tabla `office`**  
-  Almacena la información de las oficinas para comprobar que un admin si pertenece a una entidad.
-  - `id` (`INTEGER`, clave primaria, autoincremental) – Identificador único de la oficina.
-  - `name` (`TEXT`, no nulo) - Nombre de la offica o lugar medico.
 
 ### **FastAPI**
 
