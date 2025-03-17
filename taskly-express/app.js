@@ -5,46 +5,41 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var swaggerUi = require('swagger-ui-express');
 var swaggerSpec = require('./swaggerConfig');
+var errorHandler = require("./middlewares/errorHandler");
 
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/v1/auth');
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+// Configuración del motor de vistas
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
 
-app.use(logger('dev'));
+// Middlewares básicos
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-// Swagger docs and routes
+// Documentación Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.get("/openapi.json", (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.send(swaggerSpec);
 });
 
+// Rutas principales
 app.use('/', indexRouter);
 app.use('/v1/auth', authRouter);
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// Capturar errores 404 y pasarlos al manejador de errores
+app.use((req, res, next) => {
+  next(createError(404, "Recurso no encontrado"));
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// Middleware de manejo de errores centralizado
+app.use(errorHandler);
 
 module.exports = app;
