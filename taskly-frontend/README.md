@@ -15,7 +15,7 @@ En esta sección se mostrara las herramientas o frameworks utilizados:
 
 ## Demo
 
-Aquí está el enlace para visualizar el demo: [Taskly]().
+Aquí está el enlace para visualizar el demo: [Taskly](https://67d8b69e98132f42d85964f5--luminous-starship-eb26e8.netlify.app/).
 
 ## Ejecucion de desarrollo
 
