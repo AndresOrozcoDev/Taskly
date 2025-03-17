@@ -16,7 +16,7 @@ const router = express.Router();
  * /register:
  *   post:
  *     summary: Registra un nuevo usuario
- *     tags: [Auth]
+ *     tags: [Autenticación]
  *     requestBody:
  *       required: true
  *       content:
@@ -36,6 +36,7 @@ const router = express.Router();
  *               rol:
  *                 type: string
  *                 example: "admin"
+ *                 description: "Rol del usuario (opcional, por defecto 'user')"
  *     responses:
  *       201:
  *         description: Usuario registrado correctamente

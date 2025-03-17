@@ -8,7 +8,7 @@ const SECRET_KEY = process.env.JWT_SECRET || "dev";
  * 📌 Registro de usuario
  */
 exports.register = async (req, res) => {
-  const { email, password, rol } = req.body;
+  const { email, password, rol = "user" } = req.body;
 
   if (!email || !password) {
     return res.status(400).json({ message: "El email y la contraseña son obligatorios" });
@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const normalizedEmail = email.toLowerCase(); // Evita duplicados por mayúsculas/minúsculas
+    const normalizedEmail = email.toLowerCase(); // Evitar duplicados por mayúsculas/minúsculas
 
     db.run(
       `INSERT INTO user (email, password, rol) VALUES (?, ?, ?)`,
