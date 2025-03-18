@@ -2,6 +2,8 @@ import os
 import uvicorn
 
 from fastapi import FastAPI
+from app.core.exceptions import add_exception_handlers
+from app.core.middleware import add_middlewares
 
 from app.core.database import engine, Base
 from app.core.config import Configs
@@ -24,7 +26,7 @@ app = FastAPI(
             "description": "Local server",
         },
         {
-            "url": '',
+            "url": f"{configs.URL_FRONTEND}",
             "description": 'Development server',
         }
     ],
@@ -36,8 +38,16 @@ app = FastAPI(
     ],
 )
 
+# Agregar excepciones y middlewares
+add_exception_handlers(app)
+add_middlewares(app)
+
+# Rutas principales
 app.include_router(api_router)
+
+# Instancia de la base de datos
 Base.metadata.create_all(bind=engine)
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=configs.PORT_FASTAPI)
