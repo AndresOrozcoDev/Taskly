@@ -40,15 +40,13 @@ Ejecución del contenedor
 docker run -p 4200:80 <name_container>
 ```
 
-### Resumen de Parámetros o Encabezados
+## Resumen de Parámetros o Encabezados
 
 | **Servicio**                     | **Método** | **Cuerpo (Body)**                                      | **Encabezado (Header)**                              |
 |-----------------------------------|------------|-------------------------------------------------------|-----------------------------------------------------|
 | **Registro de Usuario**           | `POST`     | `email`, `password`, `rol` (opcional)                 | Ninguno                                              |
 | **Inicio de Sesión**              | `POST`     | `email`, `password`                                   | Ninguno                                              |
 | **Obtener Usuario Autenticado**   | `GET`      | Ninguno                                               | `Authorization: Bearer tu_token_aqui`               |
-
-
 
 ## Migraciones
 
