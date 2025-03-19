@@ -1,1 +1,8 @@
-<p>task works!</p>
+<div class="main-content d-flex w-100 p-3">
+    <div class="row w-100 gap-20">
+        <div class="col-md-3 w-100 p-3" *ngFor="let task of tasks">
+            <p>{{task.id}}</p>
+            <p>{{task.title}}</p>
+        </div>
+    </div>
+</div>
