@@ -40,6 +40,16 @@ Ejecución del contenedor
 docker run -p 4200:80 <name_container>
 ```
 
+### Resumen de Parámetros o Encabezados
+
+| **Servicio**                     | **Método** | **Cuerpo (Body)**                                      | **Encabezado (Header)**                              |
+|-----------------------------------|------------|-------------------------------------------------------|-----------------------------------------------------|
+| **Registro de Usuario**           | `POST`     | `email`, `password`, `rol` (opcional)                 | Ninguno                                              |
+| **Inicio de Sesión**              | `POST`     | `email`, `password`                                   | Ninguno                                              |
+| **Obtener Usuario Autenticado**   | `GET`      | Ninguno                                               | `Authorization: Bearer tu_token_aqui`               |
+
+
+
 ## Migraciones
 
 Cuando se realice un cambio estructural en la base de datos (agregar, editar o quitar columnas en las tablas) y se queria actualizar la base de datos sin perder los datos insertados alli, se debe migrar la base de datos con el siguiente comando de Alembic:
