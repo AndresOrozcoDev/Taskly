@@ -80,14 +80,50 @@ router.post("/login", login);
  * /v1/auth/auth:
  *   get:
  *     summary: Obtiene el usuario autenticado
+ *     description: Retorna la información del usuario autenticado si el token es válido.
  *     tags: [Auth]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Información del usuario autenticado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                       example: "123456"
+ *                     email:
+ *                       type: string
+ *                       example: "usuario@example.com"
+ *                     role:
+ *                       type: string
+ *                       example: "admin"
  *       401:
- *         description: Token no válido o expirado
+ *         description: Acceso denegado (Token no proporcionado)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Acceso denegado"
+ *       403:
+ *         description: Token inválido o expirado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Token inválido"
  */
 router.get("/auth", authenticateToken, getUser);
 
