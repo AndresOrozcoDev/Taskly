@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const cors = require('cors');
 var swaggerUi = require('swagger-ui-express');
 var swaggerSpec = require('./swaggerConfig');
 var errorHandler = require("./middlewares/errorHandler");
@@ -30,9 +31,21 @@ app.get("/openapi.json", (req, res) => {
   res.send(swaggerSpec);
 });
 
+// Configuración de CORS
+const corsOptions = {
+  origin: [
+    "http://localhost:4200",
+    "https://67d8b69e98132f42d85964f5--luminous-starship-eb26e8.netlify.app/",
+  ],
+  methods: 'GET,POST,PUT,DELETE',
+  allowedHeaders: 'Content-Type,Authorization'
+};
+
+app.use(cors(corsOptions));
+
 // Rutas principales
 app.use('/', indexRouter);
-app.use('/v1/auth', authRouter);
+app.use('/api/v1/auth', authRouter);
 
 // Capturar errores 404 y pasarlos al manejador de errores
 app.use((req, res, next) => {

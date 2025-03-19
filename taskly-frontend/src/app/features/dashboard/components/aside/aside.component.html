@@ -4,19 +4,19 @@
       <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleMenu()">
         <a class="d-flex flex-row">
           <lucide-angular [img]="icons.menu" class="my-icon"></lucide-angular>
-          <p>Menu</p>
+          <p class="text">Menu</p>
         </a>
       </li>
       <li class="menu-toggle d-flex flex-row align-items-center">
         <a class="d-flex flex-rowr" href="" [routerLink]="['/home', { outlets: { dashboard: ['test'] } }]">
           <lucide-angular [img]="icons.profile" class="my-icon"></lucide-angular>
-          <p>Profile</p>
+          <p class="text">Profile</p>
         </a>
       </li>
       <li class="menu-toggle d-flex flex-row align-items-center">
         <a class="d-flex flex-row" href="" [routerLink]="['/home', { outlets: { dashboard: ['tasks'] } }]">
           <lucide-angular [img]="icons.archive" class="my-icon"></lucide-angular>
-          <p>Tasks</p>
+          <p class="text">Tasks</p>
         </a>
       </li>
     </ul>
@@ -25,13 +25,13 @@
     <ul>
       <li class="menu-toggle d-flex flex-row align-items-center" (click)="logout()">
         <a class="d-flex flex-row">
-          <p>Logout</p>
+          <p class="text">Logout</p>
           <lucide-angular [img]="icons.logOut" class="my-icon"></lucide-angular>
         </a>
       </li>
       <li class="menu-toggle d-flex flex-row align-items-center">
         <a class="d-flex flex-row">
-          <p>Mode</p>
+          <p class="text">Mode</p>
           <lucide-angular [img]="icons.sun" class="my-icon"></lucide-angular>
         </a>
       </li>
