@@ -10,7 +10,7 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 ## Despliegue
 
 - **Frontends:** Desplegados en **Netlify**.
-  - [Portal](https://67d8b69e98132f42d85964f5--luminous-starship-eb26e8.netlify.app/)
+  - [Portal](https://luminous-starship-eb26e8.netlify.app/)
 - **Backends:** Desplegados en **Render**.
   - [Servicios Web Usuarios](https://taskly-euyg.onrender.com/api-docs)
   - [Servicios Web Tareas](https://taskly-1-t7vy.onrender.com/docs)
