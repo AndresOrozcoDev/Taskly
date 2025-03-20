@@ -121,8 +121,29 @@ $line-height-small: 1.4;
     &--error {
         color: red
     }
+
+    &--white {
+        color: var(--white-color) !important;
+    }
 }
 
 label {
     @extend .text;
+}
+
+// Button
+button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    row-gap: 5px;
+    padding: 0.2rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--bg-grey-dark-color);
+    background-color: var(--bg-grey-dark-color);
+    cursor: pointer;
+
+    &--icon {
+        padding: 0;
+    }
 }

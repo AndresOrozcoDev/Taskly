@@ -1,8 +1,20 @@
-<div class="main-content d-flex w-100 p-3">
-    <div class="row w-100 gap-20">
-        <div class="col-md-3 w-100 p-3" *ngFor="let task of tasks">
-            <p>{{task.id}}</p>
-            <p>{{task.title}}</p>
+<div class="d-flex flex-column p-3">
+    <div class="d-flex flex-row justify-content-end w-100 p-3">
+        <button (click)="openModal()">
+            <p>Add</p>
+            <lucide-angular [img]="icons.plus" class="my-icon"></lucide-angular>
+        </button>
+    </div>
+    <div class="main-content d-flex w-100 p-3">
+        <div class="row w-100 gap-20">
+            <div class="col-md-3 w-100 p-3" *ngFor="let task of tasks">
+                <p>{{task.id}}</p>
+                <p>{{task.title}}</p>
+            </div>
         </div>
     </div>
 </div>
+
+<app-modal [isOpen]="showModal" [title]="'Mi Modal Personalizado'" (closeModal)="closeModal()">
+    <p>Este es el contenido del modal</p>
+</app-modal>
