@@ -35,7 +35,7 @@ app.get("/openapi.json", (req, res) => {
 const corsOptions = {
   origin: [
     "http://localhost:4200",
-    "https://67d8b69e98132f42d85964f5--luminous-starship-eb26e8.netlify.app/",
+    "https://luminous-starship-eb26e8.netlify.app/",
   ],
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization'
