@@ -22,7 +22,8 @@ export class LoginFormComponent {
   });
 
   ngOnInit(): void {
-    this.translate.use('es');
+    const lang = localStorage.getItem('language') || 'es';
+    this.translate.use(lang);
   }
 
   onSubmit() {
