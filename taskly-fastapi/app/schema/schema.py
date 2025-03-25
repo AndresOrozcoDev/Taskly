@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List, Optional, Union
+from typing import List, Optional, Union, Literal
 from pydantic import BaseModel
 
 
@@ -12,6 +12,6 @@ class Task(BaseModel):
     title: str
     user_email: str
     description: str
-    status: str
+    status: Literal['pending', 'progress', 'completed']
     created: Optional[datetime] = None
     updated: Optional[datetime] = None
