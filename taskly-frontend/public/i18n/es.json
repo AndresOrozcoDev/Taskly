@@ -1,0 +1,20 @@
+{
+    "MENU": "Menu",
+    "PERFIL": "Perfil",
+    "TAREAS": "Tareas",
+    "CERRAR_SESION": "Cerrar sesion",
+    "TEMA": "Tema",
+    "CAMBIAR_LENGUAJE": "Ingles",
+
+    "INICIAR_SESION": "Iniciar sesion",
+    "EMAIL": "Correo electronico",
+    "CONTRASENA": "Contraseña",
+    "CREAR_CUENTA": "No tienes una cuenta?",
+    "OLVIDAR_CONTRASEÑA": "Se te olvido la contraseña?",
+    "RECORDARME": "Recordarme",
+
+    "REGISTARME": "Registrarme",
+    "CONFIRMAR_CONTRASENA": "Confirmar contraseña",
+
+    "OLVIDO_CONTRASEÑA": "Olvido de contraseña"
+}

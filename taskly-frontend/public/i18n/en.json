@@ -1,0 +1,20 @@
+{
+    "MENU": "Menu",
+    "PERFIL": "Profile",
+    "TAREAS": "Tasks",
+    "CERRAR_SESION": "Logout",
+    "TEMA": "Theme",
+    "CAMBIAR_LENGUAJE": "Español",
+
+    "INICIAR_SESION": "Login",
+    "EMAIL": "Email",
+    "CONTRASENA": "Password",
+    "CREAR_CUENTA": "Have account?",
+    "OLVIDAR_CONTRASEÑA": "Forget password?",
+    "RECORDARME": "Remember me",
+
+    "REGISTARME": "Register",
+    "CONFIRMAR_CONTRASENA": "Confirm password",
+
+    "OLVIDO_CONTRASEÑA": "Forget password"
+}
