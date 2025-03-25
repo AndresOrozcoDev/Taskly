@@ -5,19 +5,13 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 
 from app.core.database import Base
 
-class User(Base):
-    __tablename__ = 'users'
-    
-    email = Column(String, primary_key=True)
-    created = Column(DateTime, default=datetime.datetime.utcnow)
-
 class Task(Base):
     __tablename__ = 'tasks'
     
     id = Column(Integer, primary_key=True, autoincrement=True)
     title = Column(String, nullable=False)
-    user_email = Column(String, ForeignKey('users.email'))
+    user_email = Column(String, nullable=False)
     description = Column(String)
-    status = Column(String, default="pending")
+    status = Column(String, default="pending", nullable=False)
     created = Column(DateTime, default=datetime.datetime.utcnow)
     updated = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
