@@ -4,7 +4,7 @@ import { TaskService } from '../../services/task.service';
 import { Taks } from '../../utils/models';
 import { LoadingService } from '../../../../utils/services/loading.service';
 import { lastValueFrom } from 'rxjs';
-import { LucideAngularModule, Plus } from 'lucide-angular';
+import { LucideAngularModule, Plus, Clock, Loader, CircleCheck } from 'lucide-angular';
 import { ModalComponent } from '../../../../utils/components/modal/modal.component';
 
 @Component({
@@ -18,6 +18,9 @@ export class TaskComponent {
   tasks: Taks[] = [];
   readonly icons = {
     plus: Plus,
+    pending: Clock,
+    progress: Loader,
+    completed: CircleCheck
   };
   showModal: boolean = false;
 
@@ -45,6 +48,15 @@ export class TaskComponent {
 
   closeModal() {
     this.showModal = false;
+  }
+
+  getStatusKey(status: string): keyof typeof this.icons {
+    switch (status) {
+      case 'pending': return 'pending';
+      case 'progress': return 'progress';
+      case 'completed': return 'completed';
+      default: return 'plus';
+    }
   }
 
 }

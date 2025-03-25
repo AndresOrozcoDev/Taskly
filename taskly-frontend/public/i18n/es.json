@@ -16,5 +16,6 @@
     "REGISTARME": "Registrarme",
     "CONFIRMAR_CONTRASENA": "Confirmar contraseña",
 
-    "OLVIDO_CONTRASEÑA": "Olvido de contraseña"
+    "OLVIDO_CONTRASEÑA": "Olvido de contraseña",
+    "ENVIAR_EMAIL": "Enviar email"
 }

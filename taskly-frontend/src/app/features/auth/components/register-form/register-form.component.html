@@ -1,19 +1,19 @@
 <form class="col-12 col-md-4 w-100 h-100 p-5" [formGroup]="registerForm" (ngSubmit)="onRegister()">
-    <p class="title mb-4">Register</p>
+    <p class="title mb-4">{{ 'REGISTARME' | translate }}</p>
     <div class="form-group w-100 mb-4">
-        <label class="mb-2" for="username">Email</label>
+        <label class="mb-2" for="username">{{ 'EMAIL' | translate }}</label>
         <input type="text" id="username" formControlName="email" placeholder="John Doe" autocomplete="off">
     </div>
     <div class="form-group w-100 mb-4">
-        <label class="mb-2" for="password">Password</label>
+        <label class="mb-2" for="password">{{ 'CONTRASENA' | translate }}</label>
         <input type="password" id="password" formControlName="password" placeholder="Password">
     </div>
     <div class="form-group w-100 mb-1">
-        <label class="mb-2" for="retry-password">Confirm password</label>
+        <label class="mb-2" for="retry-password">{{ 'CONFIRMAR_CONTRASENA' | translate }}</label>
         <input type="password" id="retry-password" formControlName="retryPassword" placeholder="Password">
     </div>
     <p *ngIf="submitted && registerForm.invalid" class="text--xs text--error">Invalid form!</p>
     <div class="d-flex w-100 justify-content-end mt-3">
-        <input type="submit" class="btn btn-primary" value="Register">
+        <input type="submit" class="btn btn-primary" [value]="'REGISTARME' | translate">>
     </div>
 </form>

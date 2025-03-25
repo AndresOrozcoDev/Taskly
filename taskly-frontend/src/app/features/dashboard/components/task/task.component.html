@@ -7,9 +7,19 @@
     </div>
     <div class="main-content d-flex w-100 p-3">
         <div class="row w-100 gap-20">
-            <div class="col-md-3 w-100 p-3" *ngFor="let task of tasks">
-                <p>{{task.id}}</p>
-                <p>{{task.title}}</p>
+            <div class="card col-md-3 w-100 p-3" *ngFor="let task of tasks">
+                <div class="py-2">
+                    <p class="fw-bold">{{task.title}}</p>
+                    <p class="fw-light">{{task.description}}</p>
+                </div>
+                <hr>
+                <div class="py-2 d-flex flex-row justify-content-between">
+                    <p class="fw-light">{{task.user_email}}</p>
+                    <div class="d-flex flex-row">
+                        <p>{{task.status}}</p>
+                        <lucide-angular [img]="icons[getStatusKey(task.status)]"></lucide-angular>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
