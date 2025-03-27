@@ -127,6 +127,12 @@ $line-height-small: 1.4;
     }
 }
 
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 label {
     @extend .text;
 }
