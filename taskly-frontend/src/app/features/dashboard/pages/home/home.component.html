@@ -1,5 +1,5 @@
 <div class="home d-flex flex-row w-100 h-100">
-    <app-aside [rol]="rol"></app-aside>
+    <app-aside [rol]="rol" (onLogout)="logout($event)"></app-aside>
     <div class="home__container w-100">
         <router-outlet name='dashboard'></router-outlet>
     </div>

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, signal } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule, Archive, Sun, LogOut, AlignJustify, CircleUserRound, Globe } from 'lucide-angular';
 
@@ -13,6 +13,7 @@ import { LucideAngularModule, Archive, Sun, LogOut, AlignJustify, CircleUserRoun
 export class AsideComponent {
   currentLang = signal(localStorage.getItem('language') || 'en');
   @Input() rol!: string;
+  @Output() onLogout = new EventEmitter<boolean>();
   isOpen = false;
   readonly icons = {
     archive: Archive,
@@ -23,7 +24,7 @@ export class AsideComponent {
     globe: Globe,
   };
 
-  constructor(private router: Router, private translate: TranslateService) { }
+  constructor(private translate: TranslateService) { }
 
   ngOnInit(): void {
     this.translate.setDefaultLang('es');
@@ -35,7 +36,7 @@ export class AsideComponent {
   }
 
   logout() {
-    this.router.navigate(['/']);
+    this.onLogout.emit(true);
   }
 
   toggleLanguage() {

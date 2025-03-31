@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AsideComponent } from '../../components/aside/aside.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({
@@ -12,7 +12,10 @@ import { jwtDecode } from 'jwt-decode';
 export class HomeComponent {
 
   decodedToken: any;
-  rol : string = 'user'
+  rol : string = 'user';
+  isLogout : boolean = false;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.decodeToken();
@@ -27,6 +30,15 @@ export class HomeComponent {
       } catch (error) {
         console.error('Error al decodificar el token:', error);
       }
+    }
+  }
+
+  logout(isLogout: boolean) {
+    if(isLogout) {
+      this.router.navigate(['/']);
+      localStorage.removeItem('authToken');
+    } else {
+      console.error('Error'); 
     }
   }
 
