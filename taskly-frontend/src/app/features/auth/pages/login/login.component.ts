@@ -19,11 +19,9 @@ export class LoginComponent {
 
   async onLogin(data: User) {
     if (data) {
-      console.log('Datos:', data);
       this.loadingService.show();
       const response = await this.authServices.postLogin(data).subscribe(
         (response) => {
-          console.log(response);
           localStorage.setItem('authToken', response.token);
           this.router.navigate(['/home']);
           this.loadingService.hide();

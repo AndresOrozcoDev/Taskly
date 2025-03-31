@@ -17,5 +17,11 @@
     "CONFIRMAR_CONTRASENA": "Confirm password",
 
     "OLVIDO_CONTRASEÑA": "Forget password",
-    "ENVIAR_EMAIL": "Send email"
+    "ENVIAR_EMAIL": "Send email",
+
+    "NOMBRE": "Name",
+    "DESCRIPCION": "Description",
+    "ESTADO": "Status",
+    "CREAR": "Create",
+    "SELECCIONA": "Select"
 }

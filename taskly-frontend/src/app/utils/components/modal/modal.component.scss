@@ -16,8 +16,13 @@
     padding: 20px;
     border-radius: 8px;
     width: min(90%, 500px);
-    text-align: center;
+    overflow-y: auto;
+    max-height: 80%;
     position: relative;
+
+    h2 {
+        text-align: center;
+    }
 
     button {
         position: absolute;

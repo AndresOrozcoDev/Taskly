@@ -27,6 +27,6 @@
     </div>
 </div>
 
-<app-modal [isOpen]="showModal" [title]="'Mi Modal Personalizado'" (closeModal)="closeModal()">
-    <p>Este es el contenido del modal</p>
+<app-modal [isOpen]="showModal" [title]="'Tarea'" (closeModal)="closeModal()">
+    <app-task-form (formData)="onCreate($event)"></app-task-form>
 </app-modal>

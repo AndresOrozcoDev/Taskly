@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ResponseTask, Task } from '../utils/models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class TaskService {
 
   getTasks(): Observable<any> {
     return this.http.get<any>(`${this.urlBase}`)
+  }
+
+  postTask(task: Task): Observable<ResponseTask> {
+    return this.http.post<ResponseTask>(`${this.urlBase}`, task);
   }
 }

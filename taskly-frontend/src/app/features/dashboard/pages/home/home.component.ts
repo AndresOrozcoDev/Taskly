@@ -27,6 +27,7 @@ export class HomeComponent {
       try {
         this.decodedToken = jwtDecode(token);
         this.rol = this.decodedToken?.rol || 'user';
+        localStorage.setItem('user', JSON.stringify(this.decodedToken))
       } catch (error) {
         console.error('Error al decodificar el token:', error);
       }

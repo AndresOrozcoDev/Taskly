@@ -1,0 +1,23 @@
+<form class="form col-12 col-md-4 w-100 h-100 p-3" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="form-group w-100 mb-4">
+        <label class="mb-2" for="title">{{ 'NOMBRE' | translate }}</label>
+        <input type="text" id="title" formControlName="title" placeholder="Crear tarea" autocomplete="off" required>
+    </div>
+    <div class="form-group w-100 mb-4">
+        <label class="mb-2" for="description">{{ 'DESCRIPCION' | translate }}</label>
+        <input type="text" id="description" formControlName="description" placeholder="Completar el formulario y enviarlo" autocomplete="off" required>
+    </div>
+    <div class="form-group w-100 mb-4">
+        <label class="mb-2" for="status">{{ 'ESTADO' | translate }}</label>
+        <select id="status" formControlName="status" required>
+            <option value="" disabled selected>{{ 'SELECCIONA' | translate }}</option>
+            <option value="pending">Pendiente</option>
+            <option value="progress">En Proceso</option>
+            <option value="completed">Completada</option>
+        </select>
+    </div>
+    <p *ngIf="submitted && taskForm.invalid" class="text--xs text--error">Invalid form!</p>
+    <div class="d-flex w-100 justify-content-end mt-4">
+        <input type="submit" class="btn btn-primary" [value]="'CREAR' | translate">
+    </div>
+</form>
