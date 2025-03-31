@@ -4,7 +4,7 @@ import { TaskService } from '../../services/task.service';
 import { Task } from '../../utils/models';
 import { LoadingService } from '../../../../utils/services/loading.service';
 import { lastValueFrom } from 'rxjs';
-import { LucideAngularModule, Plus, Clock, Loader, CircleCheck } from 'lucide-angular';
+import { LucideAngularModule, Plus, Clock, Loader, CircleCheck, Trash } from 'lucide-angular';
 import { ModalComponent } from '../../../../utils/components/modal/modal.component';
 import { TaskFormComponent } from '../task-form/task-form.component';
 
@@ -21,7 +21,8 @@ export class TaskComponent {
     plus: Plus,
     pending: Clock,
     progress: Loader,
-    completed: CircleCheck
+    completed: CircleCheck,
+    trash: Trash
   };
   showModal: boolean = false;
 
@@ -48,8 +49,9 @@ export class TaskComponent {
       this.loadingServices.show();
       const response = await this.taskServices.postTask(dataTask).subscribe(
         (response) => {
-          console.log(response);
           this.loadingServices.hide();
+          this.closeModal();
+          this.getAll();
         },
         (error) => { 
           console.error('Error en la creacion:', error);
@@ -70,6 +72,24 @@ export class TaskComponent {
       status: formValues.status
     };
     return taskData;
+  }
+
+  async deleteTask(id?: number) {
+    if (id) {
+      this.loadingServices.show();
+      const response = await this.taskServices.deleteTask(id).subscribe(
+        (response) => {
+          this.loadingServices.hide();
+          this.getAll();
+        },
+        (error) => { 
+          console.error('Error en la eliminacion:', error);
+          this.loadingServices.hide();
+        }
+      );
+    } else {
+      console.error('Hubo un error con los datos.');
+    }
   }
 
   openModal() {
