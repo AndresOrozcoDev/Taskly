@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -13,13 +13,13 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class RegisterFormComponent {
 
   submitted = false;
+  @Output() formData = new EventEmitter<any>();
 
-  constructor(private router: Router, private translate: TranslateService) { }
+  constructor(private translate: TranslateService) { }
 
   registerForm = new FormGroup({
     email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    retryPassword: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required)
   });
 
   ngOnInit(): void {
@@ -27,10 +27,9 @@ export class RegisterFormComponent {
     this.translate.use(lang);
   }
 
-  onRegister() {
+  onSubmit() {
     if (this.registerForm.valid) {
-      console.info(this.registerForm.value);
-      this.router.navigate(['/home']);
+      this.formData.emit(this.registerForm.value);
     } else {
       this.submitted = true;
       console.error('Empty form!');

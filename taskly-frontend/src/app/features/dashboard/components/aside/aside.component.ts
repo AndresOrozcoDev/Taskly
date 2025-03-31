@@ -1,16 +1,18 @@
-import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, signal } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LucideAngularModule, Archive, Sun, LogOut, AlignJustify, CircleUserRound, Globe } from 'lucide-angular';
 
 @Component({
   selector: 'app-aside',
-  imports: [RouterModule, LucideAngularModule, TranslateModule],
+  imports: [CommonModule, RouterModule, LucideAngularModule, TranslateModule],
   templateUrl: './aside.component.html',
   styleUrl: './aside.component.scss'
 })
 export class AsideComponent {
   currentLang = signal(localStorage.getItem('language') || 'en');
+  @Input() rol!: string;
   isOpen = false;
   readonly icons = {
     archive: Archive,

@@ -1,46 +1,51 @@
 <div class="aside-container" [class.open]="isOpen" (mouseleave)="isOpen = false">
-  <nav class="up-menu">
-    <ul>
-      <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleMenu()">
-        <a class="d-flex flex-row">
-          <lucide-angular [img]="icons.menu" class="my-icon"></lucide-angular>
-          <p class="text">{{ "MENU" | translate }}</p>
-        </a>
-      </li>
-      <li class="menu-toggle d-flex flex-row align-items-center">
-        <a class="d-flex flex-rowr" href="" [routerLink]="['/home', { outlets: { dashboard: ['test'] } }]">
-          <lucide-angular [img]="icons.profile" class="my-icon"></lucide-angular>
-          <p class="text">{{ "PERFIL" | translate }}</p>
-        </a>
-      </li>
-      <li class="menu-toggle d-flex flex-row align-items-center">
-        <a class="d-flex flex-row" href="" [routerLink]="['/home', { outlets: { dashboard: ['tasks'] } }]">
-          <lucide-angular [img]="icons.archive" class="my-icon"></lucide-angular>
-          <p class="text">{{ "TAREAS" | translate }}</p>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  <nav class="down-menu">
-    <ul>
-      <li class="menu-toggle d-flex flex-row align-items-center" (click)="logout()">
-        <a class="d-flex flex-row">
-          <p class="text">{{ "CERRAR_SESION" | translate }}</p>
-          <lucide-angular [img]="icons.logOut" class="my-icon"></lucide-angular>
-        </a>
-      </li>
-      <li class="menu-toggle d-flex flex-row align-items-center">
-        <a class="d-flex flex-row">
-          <p class="text">{{ "TEMA" | translate }}</p>
-          <lucide-angular [img]="icons.sun" class="my-icon"></lucide-angular>
-        </a>
-      </li>
-      <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleLanguage()">
-        <a class="d-flex flex-row">
-          <p class="text">{{ "CAMBIAR_LENGUAJE" | translate }}</p>
-          <lucide-angular [img]="icons.globe" class="my-icon"></lucide-angular>
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <div class="d-flex flex-column h-100 justify-content-between">
+    <nav class="up-menu">
+      <ul>
+        <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleMenu()">
+          <a class="d-flex flex-row">
+            <lucide-angular [img]="icons.menu" class="my-icon"></lucide-angular>
+            <p class="text">{{ "MENU" | translate }}</p>
+          </a>
+        </li>
+        <li class="menu-toggle d-flex flex-row align-items-center">
+          <a class="d-flex flex-rowr" href="" [routerLink]="['/home', { outlets: { dashboard: ['test'] } }]">
+            <lucide-angular [img]="icons.profile" class="my-icon"></lucide-angular>
+            <p class="text">{{ "PERFIL" | translate }}</p>
+          </a>
+        </li>
+        <li class="menu-toggle d-flex flex-row align-items-center">
+          <a class="d-flex flex-row" href="" [routerLink]="['/home', { outlets: { dashboard: ['tasks'] } }]">
+            <lucide-angular [img]="icons.archive" class="my-icon"></lucide-angular>
+            <p class="text">{{ "TAREAS" | translate }}</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav class="down-menu">
+      <ul>
+        <li class="menu-toggle d-flex flex-row align-items-center" (click)="logout()">
+          <a class="d-flex flex-row">
+            <p class="text">{{ "CERRAR_SESION" | translate }}</p>
+            <lucide-angular [img]="icons.logOut" class="my-icon"></lucide-angular>
+          </a>
+        </li>
+        <li class="menu-toggle d-flex flex-row align-items-center">
+          <a class="d-flex flex-row">
+            <p class="text">{{ "TEMA" | translate }}</p>
+            <lucide-angular [img]="icons.sun" class="my-icon"></lucide-angular>
+          </a>
+        </li>
+        <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleLanguage()">
+          <a class="d-flex flex-row">
+            <p class="text">{{ "CAMBIAR_LENGUAJE" | translate }}</p>
+            <lucide-angular [img]="icons.globe" class="my-icon"></lucide-angular>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div>
+    <p class="text--xs ellipsis">{{rol | uppercase}}</p>
+  </div>
 </div>

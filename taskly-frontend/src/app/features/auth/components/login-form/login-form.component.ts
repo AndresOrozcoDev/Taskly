@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { User } from '../../utils/models/auth.models';
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +13,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class LoginFormComponent {
 
   submitted = false;
-  @Output() formData = new EventEmitter<any>();
+  @Output() formData = new EventEmitter<User>();
 
   constructor(private translate: TranslateService) { }
 

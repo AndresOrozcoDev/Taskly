@@ -14,10 +14,18 @@
     flex-direction: column;
     justify-content: space-between;
 
-    &.open, &:hover {
+    div:last-child {
+        padding-block: 1rem;
+        text-align: center;
+        border-top: 1px solid var(--bg-grey-dark-color);
+    }
+
+    &.open,
+    &:hover {
         width: 200px;
 
         .up-menu {
+
             ul li {
                 justify-content: start;
 
@@ -40,7 +48,8 @@
         }
     }
 
-    .up-menu, .down-menu {
+    .up-menu,
+    .down-menu {
         padding-top: 20px;
         padding-bottom: 20px;
 
