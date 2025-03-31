@@ -9,7 +9,7 @@ import { User, ResponseLogin, ResponseRegister } from '../utils/models/auth.mode
 })
 export class AuthService {
 
-  urlBase: string = 'http://localhost:3000/api/v1/auth'
+  urlBase: string = environment.BASE_URL_USER || 'http://localhost:3000/api/v1/auth'
 
   constructor(private http: HttpClient) { }
 
