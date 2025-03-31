@@ -22,8 +22,8 @@ class TaskServices():
                 "user_email": task.user_email,
                 "description": task.description,
                 "status": task.status,
-                "created": task.created or datetime.datetime.utcnow(),
-                "updated": task.updated or datetime.datetime.utcnow(),
+                "created": task.created or datetime.utcnow(),
+                "updated": task.updated or datetime.utcnow(),
             })
         self.db.add(new)
         self.db.commit()
