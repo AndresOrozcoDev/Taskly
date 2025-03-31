@@ -51,7 +51,10 @@ export class TaskComponent {
           console.log(response);
           this.loadingServices.hide();
         },
-        (error) => { console.error('Error en la creacion:', error); }
+        (error) => { 
+          console.error('Error en la creacion:', error);
+          this.loadingServices.hide();
+        }
       );
     } else {
       console.error('Hubo un error con los datos.');
