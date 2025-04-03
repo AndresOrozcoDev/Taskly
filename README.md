@@ -96,6 +96,9 @@ Las bases de datos de Express y FastAPI son **independientes** y se utilizan seg
 
 Para asegurarse de que solo los usuarios registrados puedan crear tareas, FastAPI realizará una solicitud `HTTP` a Express para verificar si el email del usuario existe en la tabla user. Si el usuario es válido, la tarea se creará con éxito.
 
+> [!TIP]
+> En la url cambia la palabra **github** por **gitingest** para visualizar la estructura de carpetas completa y todo el contenido HTML.
+
 ## Autor
 
 **Andrés Orozco**
