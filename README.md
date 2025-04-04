@@ -15,6 +15,9 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
   - [Servicios Web Usuarios](https://taskly-euyg.onrender.com/api-docs)
   - [Servicios Web Tareas](https://taskly-1-t7vy.onrender.com/docs)
 
+> [!WARNING]
+> Como son servidores gratuitos, el primer llamado al servidos despues de 7 minutos inactivo tendra una latencia alta en responder.
+
 ## Estructura del proyecto
 
 ![Arquitectura de Taskly](./architecture_taskly.jpg)
@@ -97,6 +100,12 @@ Las bases de datos de Express y FastAPI son **independientes** y se utilizan seg
 - **FastAPI** administra las `task`.
 
 Para asegurarse de que solo los usuarios registrados puedan crear tareas, FastAPI realizará una solicitud `HTTP` a Express para verificar si el email del usuario existe en la tabla user. Si el usuario es válido, la tarea se creará con éxito.
+
+> [!TIP]
+> En la url cambia la palabra **github** por **gitingest** para visualizar la estructura de carpetas completa y todo el contenido HTML.
+
+> [!TIP]
+> En la url cambia la palabra **github** por **gitdiagram** para visualizar el diagrama de componentes y sus relaciones.
 
 ## Autor
 
