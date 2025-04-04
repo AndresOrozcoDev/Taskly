@@ -17,6 +17,8 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 
 ## Estructura del proyecto
 
+![Arquitectura de Taskly](./architecture_taskly.jpg)
+
 ### **Angular**
 
 - **Autenticacion:** Inicio se sesion, registro, restablecer contraseña.
