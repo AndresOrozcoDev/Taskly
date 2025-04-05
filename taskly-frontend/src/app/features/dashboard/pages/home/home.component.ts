@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { AsideComponent } from '../../components/aside/aside.component';
 import { Router, RouterModule } from '@angular/router';
-import { jwtDecode } from 'jwt-decode';
+import { AuthService } from '../../../auth/services/auth.service';
+import { User } from '../../../auth/utils/models/auth.models';
+import { tap } from 'rxjs/operators';;
 
 @Component({
   selector: 'app-home',
@@ -11,35 +13,33 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class HomeComponent {
 
+  user: User | null = null;
   decodedToken: any;
   rol : string = 'user';
   isLogout : boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {
-    this.decodeToken();
-  }
-
-  private decodeToken(): void {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      try {
-        this.decodedToken = jwtDecode(token);
-        this.rol = this.decodedToken?.rol || 'user';
-        localStorage.setItem('user', JSON.stringify(this.decodedToken))
-      } catch (error) {
-        console.error('Error al decodificar el token:', error);
-      }
-    }
+  ngOnInit(): void {
+    this.authService.user$.pipe(
+      tap((user: User | null) => {
+        if (user) {
+          this.user = user;
+          this.rol = user.rol || 'user';
+        } else {
+          console.error('No se encontró un usuario autenticado.');
+          throw new Error('No se encontró un usuario autenticado');
+        }
+      })
+    ).subscribe();
   }
 
   logout(isLogout: boolean) {
-    if(isLogout) {
+    if (isLogout) {
+      this.authService.logout();
       this.router.navigate(['/']);
-      localStorage.removeItem('authToken');
     } else {
-      console.error('Error'); 
+      console.error('Error');
     }
   }
 

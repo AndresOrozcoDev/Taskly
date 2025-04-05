@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../utils/models';
 import { LoadingService } from '../../../../utils/services/loading.service';
-import { lastValueFrom } from 'rxjs';
 import { LucideAngularModule, Plus, Clock, Loader, CircleCheck, Trash } from 'lucide-angular';
 import { ModalComponent } from '../../../../utils/components/modal/modal.component';
 import { TaskFormComponent } from '../task-form/task-form.component';
+import { User } from '../../../auth/utils/models/auth.models';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-task',
@@ -25,68 +27,89 @@ export class TaskComponent {
     trash: Trash
   };
   showModal: boolean = false;
+  user: User | null = null;
+  userSubscription: Subscription | null = null;
 
-  constructor(private taskServices: TaskService, private loadingServices: LoadingService) { }
+  constructor(private taskServices: TaskService, private loadingServices: LoadingService, private authService: AuthService) { }
 
   ngOnInit() {
     this.getAll();
+    this.subscribeToUser();
   }
 
-  async getAll() {
-    try {
-      this.loadingServices.show();
-      this.tasks = await lastValueFrom(this.taskServices.getTasks());
-    } catch (error) {
-      console.error('Error al obtener las tareas', error);
-    } finally {
-      this.loadingServices.hide();
+  ngOnDestroy() {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
     }
   }
 
-  async onCreate(task: Task) {
+  getAll() {
+    this.loadingServices.show();
+    this.taskServices.getTasks().subscribe({
+      next: (data) => {
+        this.tasks = data;
+      },
+      error: (err) => {
+        console.error('Error al obtener las tareas', err);
+      },
+      complete: () => {
+        this.loadingServices.hide();
+      }
+    });
+  }
+
+  onCreate(task: Task): void {
     if (task) {
-      let dataTask = this.handleData(task);
+      const dataTask = this.handleData(task);
       this.loadingServices.show();
-      const response = await this.taskServices.postTask(dataTask).subscribe(
-        (response) => {
+      this.taskServices.postTask(dataTask).subscribe({
+        next: (response) => {
           this.loadingServices.hide();
           this.closeModal();
           this.getAll();
         },
-        (error) => { 
-          console.error('Error en la creacion:', error);
+        error: (error) => {
+          console.error('Error en la creación:', error);
           this.loadingServices.hide();
         }
-      );
+      });
     } else {
       console.error('Hubo un error con los datos.');
     }
   }
 
-  handleData(formValues: any) {
-    const user = JSON.parse(localStorage.getItem('user') || '');
+  handleData(formValues: any){
+    if (!this.user) {
+      console.error('Usuario no encontrado.');
+      return {
+        title: '',
+        user_email: '',
+        description: '',
+        status: ''
+      };
+    }
     const taskData = {
       title: formValues.title,
-      user_email: user.email,
+      user_email: this.user.email ?? '',
       description: formValues.description,
       status: formValues.status
     };
     return taskData;
   }
 
-  async deleteTask(id?: number) {
+  deleteTask(id?: number): void {
     if (id) {
       this.loadingServices.show();
-      const response = await this.taskServices.deleteTask(id).subscribe(
-        (response) => {
+      this.taskServices.deleteTask(id).subscribe({
+        next: (response) => {
           this.loadingServices.hide();
           this.getAll();
         },
-        (error) => { 
-          console.error('Error en la eliminacion:', error);
+        error: (error) => {
+          console.error('Error en la eliminación:', error);
           this.loadingServices.hide();
         }
-      );
+      });
     } else {
       console.error('Hubo un error con los datos.');
     }
@@ -107,6 +130,16 @@ export class TaskComponent {
       case 'completed': return 'completed';
       default: return 'plus';
     }
+  }
+
+  private subscribeToUser(): void {
+    this.userSubscription = this.authService.user$.subscribe(user => {
+      if (user) {
+        this.user = user;
+      } else {
+        console.error('No se encontró un usuario autenticado');
+      }
+    });
   }
 
 }

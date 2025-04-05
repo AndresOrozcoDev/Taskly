@@ -7,16 +7,16 @@
     </div>
     <div class="main-content d-flex w-100 p-3">
         <div class="row d-flex gap-3 w-100">
-            <div class="col-12 col-sm-12 col-md-4 col-lg-3 p-0" *ngFor="let task of tasks">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 p-0" *ngFor="let task of tasks">
                 <div class="card p-3">
                     <div class="py-2">
                         <button class="icon--float" (click)="deleteTask(task.id)">
                             <lucide-angular [img]="icons.trash" class="my-icon"></lucide-angular>
                         </button>
                         <p class="fw-bold ellipsis">{{task.title}}</p>
-                        <p class="fw-light ellipsis">{{task.description}}</p>
+                        <p class="fw-light mt-1">{{task.description}}</p>
                     </div>
-                    <div class="mt-4 py-2 d-flex flex-row justify-content-between flex-wrap">
+                    <div class="mt-2 py-2 d-flex flex-row justify-content-between flex-wrap">
                         <p class="fw-light ellipsis">{{task.user_email}}</p>
                         <div class="d-flex flex-row">
                             <p>{{task.status}}</p>

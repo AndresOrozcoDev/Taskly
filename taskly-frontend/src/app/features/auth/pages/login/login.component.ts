@@ -17,17 +17,21 @@ export class LoginComponent {
   constructor(private loadingService: LoadingService, private router: Router, private authServices: AuthService) {
   }
 
-  async onLogin(data: User) {
+  async onLogin(data: User): Promise<void> {
     if (data) {
       this.loadingService.show();
-      const response = await this.authServices.postLogin(data).subscribe(
-        (response) => {
-          localStorage.setItem('authToken', response.token);
+      try {
+        const response = await this.authServices.postLogin(data).toPromise();
+        if (response && response.token) {
           this.router.navigate(['/home']);
-          this.loadingService.hide();
-        },
-        (error) => { console.error('Error en la autenticacion:', error); }
-      );
+        } else {
+          console.error('No se recibió un token en la respuesta');
+        }
+      } catch (error) {
+        console.error('Error en la autenticación:', error);
+      } finally {
+        this.loadingService.hide();
+      }
     } else {
       console.error('Hubo un error con los datos.');
     }
