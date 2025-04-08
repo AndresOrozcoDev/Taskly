@@ -40,6 +40,12 @@ a {
 .form-group {
     width: 100%;
 
+    .required::after {
+        content: '*';
+        margin-left: 2px;
+        color: red;
+    }
+
     input[type="text"],
     input[type="password"] {
         @extend .text;

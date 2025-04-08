@@ -1,7 +1,7 @@
 <form class="form col-12 col-md-4 w-100 h-100 p-5" [formGroup]="forgetForm" (ngSubmit)="onSend()">
     <p class="title mb-4">{{ 'OLVIDO_CONTRASEÑA' | translate }}</p>
     <div class="form-group w-100 mb-1">
-        <label class="mb-2" for="email">{{ 'EMAIL' | translate }}</label>
+        <label class="mb-2 required" for="email">{{ 'EMAIL' | translate }}</label>
         <input type="text" id="email" formControlName="email" placeholder="John Doe" autocomplete="off" required>
     </div>
     <p *ngIf="submitted && forgetForm.invalid" class="text--xs text--error">Invalid form!</p>

@@ -1,11 +1,11 @@
 <form class="form col-12 col-md-4 w-100 h-100 p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <p class="title mb-4">{{ 'INICIAR_SESION' | translate }}</p>
     <div class="form-group w-100 mb-4">
-        <label class="mb-2" for="email">{{ 'EMAIL' | translate }}</label>
+        <label class="mb-2 required" for="email">{{ 'EMAIL' | translate }}</label>
         <input type="text" id="email" formControlName="email" placeholder="John Doe" autocomplete="off" required>
     </div>
     <div class="form-group w-100 mb-1">
-        <label class="mb-2" for="password">{{ 'CONTRASENA' | translate }}</label>
+        <label class="mb-2 required" for="password">{{ 'CONTRASENA' | translate }}</label>
         <input type="password" id="password" formControlName="password" placeholder="Password" required>
     </div>
     <p *ngIf="submitted && loginForm.invalid" class="text--xs text--error">Invalid form!</p>
