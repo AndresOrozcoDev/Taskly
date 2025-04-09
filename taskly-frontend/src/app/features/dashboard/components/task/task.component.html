@@ -6,8 +6,10 @@
         </button>
     </div>
     <div class="main-content d-flex w-100 p-3">
-        <div class="row d-flex gap-3 w-100">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 p-0" *ngFor="let task of tasks">
+        <div class="row w-100" 
+            cdkDropList (cdkDropListDropped)="drop($event)">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-3" *ngFor="let task of tasks; let i = index"
+            cdkDrag>
                 <div class="card p-3">
                     <div class="py-2">
                         <button class="icon--float" (click)="deleteTask(task.id)">

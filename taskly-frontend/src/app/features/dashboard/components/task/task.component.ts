@@ -9,10 +9,12 @@ import { TaskFormComponent } from '../task-form/task-form.component';
 import { User } from '../../../auth/utils/models/auth.models';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../auth/services/auth.service';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task',
-  imports: [CommonModule, LucideAngularModule, ModalComponent, TaskFormComponent],
+  imports: [CommonModule, LucideAngularModule, ModalComponent, TaskFormComponent, DragDropModule],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -130,6 +132,10 @@ export class TaskComponent {
       case 'completed': return 'completed';
       default: return 'plus';
     }
+  }
+
+  drop(event: CdkDragDrop<any[]>) {
+    moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
   }
 
   private subscribeToUser(): void {

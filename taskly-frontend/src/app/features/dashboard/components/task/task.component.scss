@@ -14,8 +14,17 @@
             border: none;
         }
 
-        & > div:nth-child(2) {
+        &>div:nth-child(2) {
             border-top: 1px solid var(--bg-grey-dark-color);
         }
+    }
+
+    .cdk-drag-preview {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    .cdk-drag-placeholder {
+        opacity: 0.3;
     }
 }
