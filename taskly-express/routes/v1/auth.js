@@ -1,6 +1,7 @@
 const express = require("express");
-const { register, login, getUser } = require("../../controllers/authController");
+const { register, login, getUser, forgetPassword } = require("../../controllers/v1/authController");
 const authenticateToken = require("../../middlewares/authMiddleware");
+const { checkEmail } = require("../../controllers/v1/utilsController");
 
 const router = express.Router();
 
@@ -126,5 +127,113 @@ router.post("/login", login);
  *                   example: "Token inválido"
  */
 router.get("/auth", authenticateToken, getUser);
+
+/**
+ * @swagger
+ * /api/v1/auth/forgetPassword:
+ *   post:
+ *     summary: Recuperar contraseña
+ *     description: Recibe un correo electrónico, valida si existe en la base de datos, genera una nueva contraseña temporal, la actualiza y devuelve la contraseña.
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: usuario@example.com
+ *     responses:
+ *       200:
+ *         description: Contraseña temporal devuelta exitosamente.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Contraseña actualizada correctamente"
+ *                 email:
+ *                   type: string
+ *                   format: email
+ *                   example: usuario@example.com
+ *                 newPassword:
+ *                   type: string
+ *                   example: "bhBHVG6j"
+ *       400:
+ *         description: El correo no existe o faltan datos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "El correo no está registrado"
+ *       500:
+ *         description: Error interno del servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Error al recuperar la contraseña"
+ */
+router.post("/forgetPassword", forgetPassword);
+
+/**
+ * @swagger
+ * /api/v1/auth/checkEmail:
+ *   post:
+ *     summary: Verifica si un correo electrónico existe
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 example: usuario@example.com
+ *     responses:
+ *       200:
+ *         description: El correo existe en la base de datos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "El correo existe en la base de datos"
+ *       404:
+ *         description: El correo no está registrado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "El correo no está registrado"
+ *       400:
+ *         description: El correo electrónico es obligatorio
+ *       500:
+ *         description: Error interno del servidor
+ */
+router.post("/checkEmail", checkEmail)
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const db = require("../configs/database");
+const db = require("../../configs/database");
+const { checkEmail, generatePassword } = require("./utilsController");
 
 const SECRET_KEY = process.env.JWT_SECRET || "dev";
 
@@ -70,4 +71,48 @@ exports.login = (req, res) => {
  */
 exports.getUser = (req, res) => {
   res.json({ user: req.user });
+};
+
+/**
+ * 📌 Recuperar contraseña - Controlador principal
+ */
+exports.forgetPassword = async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ message: "El correo electrónico es obligatorio" });
+  }
+
+  const normalizedEmail = email.toLowerCase();
+
+  try {
+    const exists = await checkEmail(normalizedEmail);
+    if (!exists) {
+      return res.status(404).json({ message: "El correo no está registrado" });
+    }
+
+    const newPassword = generatePassword();
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    await new Promise((resolve, reject) => {
+      db.run(
+        `UPDATE user SET password = ? WHERE email = ?`,
+        [hashedPassword, normalizedEmail],
+        function (err) {
+          if (err) return reject(err);
+          resolve();
+        }
+      );
+    });
+
+    return res.status(200).json({
+      message: "Contraseña actualizada correctamente",
+      email: normalizedEmail,
+      newPassword
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al recuperar la contraseña", error: error.message });
+  }
 };
