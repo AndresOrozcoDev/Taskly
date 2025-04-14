@@ -18,6 +18,7 @@
 
     "OLVIDO_CONTRASEÑA": "Forget password",
     "ENVIAR_EMAIL": "Send email",
+    "MENSAJE_OLVIDO_CONTRASEÑA": "Entering your email address is required, and the system will automatically assign you a new password for you to save and update immediately.",
 
     "NOMBRE": "Name",
     "DESCRIPCION": "Description",

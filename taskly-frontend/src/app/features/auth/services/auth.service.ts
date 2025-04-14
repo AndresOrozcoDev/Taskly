@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { User, ResponseLogin, ResponseRegister } from '../utils/models/auth.models';
+import { User, ResponseLogin, Response, Email, ResponseForget } from '../utils/models/auth.models';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
@@ -48,8 +48,12 @@ export class AuthService {
     );
   }
 
-  postRegister(user: User): Observable<ResponseRegister> {
-    return this.http.post<ResponseRegister>(`${this.urlBase}/register`, user)
+  postRegister(user: User): Observable<Response> {
+    return this.http.post<Response>(`${this.urlBase}/register`, user)
+  }
+
+  postForgetPassword(email: Email) : Observable<ResponseForget> {
+    return this.http.post<ResponseForget>(`${this.urlBase}/forgetPassword`, email)
   }
 
   logout() {

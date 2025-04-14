@@ -18,6 +18,7 @@
 
     "OLVIDO_CONTRASEÑA": "Olvido de contraseña",
     "ENVIAR_EMAIL": "Enviar email",
+    "MENSAJE_OLVIDO_CONTRASEÑA": "Es obligatorio ingresar el correo y el sistema automaticamente te asignara una nueva contraseña para que la guardes y la actualices inmediatamente.",
 
     "NOMBRE": "Nombre de la tarea",
     "DESCRIPCION": "Descripccion de la tarea",

@@ -5,7 +5,13 @@
         <input type="text" id="email" formControlName="email" placeholder="John Doe" autocomplete="off" required>
     </div>
     <p *ngIf="submitted && forgetForm.invalid" class="text--xs text--error">Invalid form!</p>
+    <p class="my-3 text--xs">{{ 'MENSAJE_OLVIDO_CONTRASEÑA' | translate }}</p>
+    <div *ngIf="newPassword" class="d-flex justify-content-between p-3 container-newPassword">
+        <p>{{ newPassword }}</p>
+        <lucide-angular [img]="icons.copy" class="my-icon" title="Copy" (click)="onCopy()"></lucide-angular>
+    </div>
     <div class="d-flex w-100 justify-content-end mt-4">
-        <input type="submit" class="btn btn-primary" [value]="'ENVIAR_EMAIL' | translate">
+        <input *ngIf="!newPassword" type="submit" class="btn btn-primary" [value]="'ENVIAR_EMAIL' | translate">
+        <button *ngIf="newPassword" class="btn btn-primary" (click)="goToHome()">{{ 'INICIAR_SESION' | translate }}</button>
     </div>
 </form>

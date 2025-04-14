@@ -3,6 +3,6 @@
         
     </div>
     <div class="login__form col-12 col-md-5 py-8">
-        <app-forget-form></app-forget-form>
+        <app-forget-form (formData)="onForgetPassword($event)" [newPassword]="newPassword"></app-forget-form>
     </div>
 </div>
