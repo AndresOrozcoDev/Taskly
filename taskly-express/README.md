@@ -47,6 +47,8 @@ docker run -p 4200:80 <name_container>
 | **Registro de Usuario**           | `POST`     | `email`, `password`, `rol` (opcional)                 | Ninguno                                              |
 | **Inicio de Sesión**              | `POST`     | `email`, `password`                                   | Ninguno                                              |
 | **Obtener Usuario Autenticado**   | `GET`      | Ninguno                                               | `Authorization: Bearer tu_token_aqui`               |
+| **Recuperar Contraseña**          | `POST`     | `email`                                               | Ninguno                                              |
+| **Verificar Correo Existente**    | `POST`     | `email`                                               | Ninguno                                              |
 
 ## Migraciones
 
