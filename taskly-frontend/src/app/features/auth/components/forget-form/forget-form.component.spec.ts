@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ForgetFormComponent } from './forget-form.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('ForgetFormComponent', () => {
   let component: ForgetFormComponent;
@@ -8,7 +9,10 @@ describe('ForgetFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ForgetFormComponent]
+      imports: [
+        ForgetFormComponent,
+        TranslateModule.forRoot()
+      ]
     })
     .compileComponents();
 

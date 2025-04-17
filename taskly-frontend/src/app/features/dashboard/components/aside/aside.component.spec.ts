@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AsideComponent } from './aside.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('AsideComponent', () => {
   let component: AsideComponent;
@@ -8,9 +11,26 @@ describe('AsideComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AsideComponent]
+      imports: [
+        AsideComponent,
+        TranslateModule.forRoot()
+      ],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            params: of({}),
+            queryParams: of({}),
+            snapshot: {
+              paramMap: {
+                get: (key: string) => null
+              }
+            }
+          }
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AsideComponent);
     component = fixture.componentInstance;
