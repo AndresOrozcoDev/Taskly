@@ -10,7 +10,7 @@ describe('ModalComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ModalComponent);
     component = fixture.componentInstance;
@@ -20,4 +20,11 @@ describe('ModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit closeModal event when close() is called', () => {
+    spyOn(component.closeModal, 'emit');
+    component.close();
+    expect(component.closeModal.emit).toHaveBeenCalled();
+  });
+
 });
