@@ -1,14 +1,14 @@
 <form class="form col-12 col-md-4 w-100 h-100 p-3" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <div class="form-group w-100 mb-4">
-        <label class="mb-2" for="title">{{ 'NOMBRE' | translate }}</label>
+        <label class="mb-2 required" for="title">{{ 'NOMBRE' | translate }}</label>
         <input type="text" id="title" formControlName="title" placeholder="Crear tarea" autocomplete="off" required>
     </div>
     <div class="form-group w-100 mb-4">
-        <label class="mb-2" for="description">{{ 'DESCRIPCION' | translate }}</label>
-        <input type="text" id="description" formControlName="description" placeholder="Completar el formulario y enviarlo" autocomplete="off" required>
+        <label class="mb-2 required" for="description">{{ 'DESCRIPCION' | translate }}</label>
+        <textarea id="description" formControlName="description" placeholder="Completar el formulario y enviarlo" required></textarea>
     </div>
     <div class="form-group w-100 mb-4">
-        <label class="mb-2" for="status">{{ 'ESTADO' | translate }}</label>
+        <label class="mb-2 required" for="status">{{ 'ESTADO' | translate }}</label>
         <select id="status" formControlName="status" required>
             <option value="" disabled selected>{{ 'SELECCIONA' | translate }}</option>
             <option value="pending">Pendiente</option>

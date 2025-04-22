@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register-form',
@@ -13,14 +13,15 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class RegisterFormComponent {
 
   submitted = false;
+  registerForm!: FormGroup;
   @Output() formData = new EventEmitter<any>();
 
-  constructor(private translate: TranslateService) { }
-
-  registerForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
-  });
+  constructor(private fb: FormBuilder, private translate: TranslateService) {
+    this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     const lang = localStorage.getItem('language') || 'es';
@@ -35,4 +36,5 @@ export class RegisterFormComponent {
       console.error('Empty form!');
     }
   }
+
 }

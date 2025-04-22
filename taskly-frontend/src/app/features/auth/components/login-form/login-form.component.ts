@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { User } from '../../utils/models/auth.models';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -13,14 +13,15 @@ import { User } from '../../utils/models/auth.models';
 export class LoginFormComponent {
 
   submitted = false;
+  loginForm!: FormGroup;
   @Output() formData = new EventEmitter<User>();
 
-  constructor(private translate: TranslateService) { }
-
-  loginForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-  });
+  constructor(private fb: FormBuilder, private translate: TranslateService) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
 
   ngOnInit(): void {
     const lang = localStorage.getItem('language') || 'es';

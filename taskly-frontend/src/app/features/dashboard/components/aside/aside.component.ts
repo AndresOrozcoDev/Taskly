@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { LucideAngularModule, Archive, Sun, LogOut, AlignJustify, CircleUserRound, Globe } from 'lucide-angular';
 
 @Component({

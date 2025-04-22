@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { TaskComponent } from './components/task/task.component';
-import { TestComponent } from './components/test/test.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 export const DASHBOARD_ROUTES: Routes = [
   {
@@ -9,7 +9,7 @@ export const DASHBOARD_ROUTES: Routes = [
     children: [
       { path: '', redirectTo: 'tasks', pathMatch: 'full' },
       { path: 'tasks', component: TaskComponent, outlet: 'dashboard' },
-      { path: 'test', component: TestComponent, outlet: 'dashboard' }
+      { path: 'profile', component: ProfileComponent, outlet: 'dashboard' }
     ], 
   },
 ];

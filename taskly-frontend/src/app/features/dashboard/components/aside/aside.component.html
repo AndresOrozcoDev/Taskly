@@ -3,21 +3,21 @@
     <nav class="up-menu">
       <ul>
         <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleMenu()">
-          <a class="d-flex flex-row">
+          <a class="d-flex flex-row align-items-center">
             <lucide-angular [img]="icons.menu" class="my-icon"></lucide-angular>
-            <p class="text">{{ "MENU" | translate }}</p>
+            <p class="text--small">{{ "MENU" | translate }}</p>
           </a>
         </li>
         <li class="menu-toggle d-flex flex-row align-items-center">
-          <a class="d-flex flex-rowr" href="" [routerLink]="['/home', { outlets: { dashboard: ['test'] } }]">
+          <a class="d-flex flex-row align-items-center" href="" [routerLink]="['/home', { outlets: { dashboard: ['profile'] } }]">
             <lucide-angular [img]="icons.profile" class="my-icon"></lucide-angular>
-            <p class="text">{{ "PERFIL" | translate }}</p>
+            <p class="text--small">{{ "PERFIL" | translate }}</p>
           </a>
         </li>
         <li class="menu-toggle d-flex flex-row align-items-center">
-          <a class="d-flex flex-row" href="" [routerLink]="['/home', { outlets: { dashboard: ['tasks'] } }]">
+          <a class="d-flex flex-row align-items-center" href="" [routerLink]="['/home', { outlets: { dashboard: ['tasks'] } }]">
             <lucide-angular [img]="icons.archive" class="my-icon"></lucide-angular>
-            <p class="text">{{ "TAREAS" | translate }}</p>
+            <p class="text--small">{{ "TAREAS" | translate }}</p>
           </a>
         </li>
       </ul>
@@ -25,20 +25,20 @@
     <nav class="down-menu">
       <ul>
         <li class="menu-toggle d-flex flex-row align-items-center" (click)="logout()">
-          <a class="d-flex flex-row">
-            <p class="text">{{ "CERRAR_SESION" | translate }}</p>
+          <a class="d-flex flex-row align-items-center">
+            <p class="text--small">{{ "CERRAR_SESION" | translate }}</p>
             <lucide-angular [img]="icons.logOut" class="my-icon"></lucide-angular>
           </a>
         </li>
         <li class="menu-toggle d-flex flex-row align-items-center">
-          <a class="d-flex flex-row">
-            <p class="text">{{ "TEMA" | translate }}</p>
+          <a class="d-flex flex-row align-items-center">
+            <p class="text--small">{{ "TEMA" | translate }}</p>
             <lucide-angular [img]="icons.sun" class="my-icon"></lucide-angular>
           </a>
         </li>
         <li class="menu-toggle d-flex flex-row align-items-center" (click)="toggleLanguage()">
-          <a class="d-flex flex-row">
-            <p class="text">{{ "CAMBIAR_LENGUAJE" | translate }}</p>
+          <a class="d-flex flex-row align-items-center">
+            <p class="text--small">{{ "CAMBIAR_LENGUAJE" | translate }}</p>
             <lucide-angular [img]="icons.globe" class="my-icon"></lucide-angular>
           </a>
         </li>

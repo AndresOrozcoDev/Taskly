@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Email } from '../../utils/models/auth.models';
 import { LucideAngularModule, Copy } from 'lucide-angular';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-forget-form',
@@ -12,20 +12,21 @@ import { LucideAngularModule, Copy } from 'lucide-angular';
   templateUrl: './forget-form.component.html',
   styleUrl: './forget-form.component.scss'
 })
-export class ForgetFormComponent implements OnChanges {
+export class ForgetFormComponent implements OnInit, OnChanges {
 
-  @Output() formData = new EventEmitter<Email>();
   readonly icons = {
     copy: Copy
   };
-
-  constructor(private translate: TranslateService, private router: Router) { }
-
-  @Input() newPassword!: string;
   submitted = false;
-  forgetForm = new FormGroup({
-    email: new FormControl('', Validators.required),
-  });
+  forgetForm!: FormGroup;
+  @Output() formData = new EventEmitter<Email>();
+  @Input() newPassword!: string;
+
+  constructor(private fb: FormBuilder, private translate: TranslateService, private router: Router) {
+    this.forgetForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
 
   ngOnInit(): void {
     const lang = localStorage.getItem('language') || 'es';
