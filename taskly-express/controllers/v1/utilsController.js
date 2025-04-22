@@ -1,20 +1,20 @@
-const db = require("../../configs/database");
+const pool = require("../../configs/database");
 
 /**
- * 🔍 Verifica si el correo existe en la base de datos
+ * 🔍 Verifica si el correo existe en la base de datos (Supabase)
  */
 exports.checkEmail = async (email) => {
-    return new Promise((resolve, reject) => {
-        db.get(`SELECT * FROM user WHERE email = ?`, [email], (err, user) => {
-            if (err) return reject(err);
-            resolve(!!user);
-        });
-    });
-}
+  try {
+    const result = await pool.query(`SELECT 1 FROM "user" WHERE email = $1 LIMIT 1`, [email]);
+    return result.rowCount > 0;
+  } catch (err) {
+    throw err;
+  }
+};
 
 /**
  * 🔐 Genera una nueva contraseña aleatoria de 8 caracteres
  */
 exports.generatePassword = () => {
-    return Math.random().toString(36).slice(-8);
-}
+  return Math.random().toString(36).slice(-8);
+};
