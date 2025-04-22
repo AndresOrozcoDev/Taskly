@@ -34,6 +34,7 @@ app.get("/openapi.json", (req, res) => {
 // Configuración de CORS
 const corsOptions = {
   origin: [
+    "http://localhost:3000",
     "http://localhost:4200",
     "https://luminous-starship-eb26e8.netlify.app",
   ],

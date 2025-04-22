@@ -19,8 +19,12 @@ const options = {
         description: 'Local server',
       },
       {
-        url: '',
-        description: 'Development server',
+        url: 'http://localhost:4200',
+        description: 'Frontend local server',
+      },
+      {
+        url: 'https://luminous-starship-eb26e8.netlify.app',
+        description: 'Frontend production server',
       }
     ],
     tags: [
