@@ -8,7 +8,7 @@
             <p class="text--small">{{ "MENU" | translate }}</p>
           </a>
         </li>
-        <li class="menu-toggle d-flex flex-row align-items-center">
+        <li *ngIf="rol === 'admin'" class="menu-toggle d-flex flex-row align-items-center">
           <a class="d-flex flex-row align-items-center" href="" [routerLink]="['/home', { outlets: { dashboard: ['profile'] } }]">
             <lucide-angular [img]="icons.profile" class="my-icon"></lucide-angular>
             <p class="text--small">{{ "PERFIL" | translate }}</p>

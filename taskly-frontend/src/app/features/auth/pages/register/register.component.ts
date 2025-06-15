@@ -18,11 +18,9 @@ export class RegisterComponent {
 
   async onRegister(data: User) {
     if (data) {
-      console.log('Datos de registro:', data);
       this.loadingService.show();
       const response = await this.authServices.postRegister(data).subscribe(
         (response) => {
-          console.log(response);
           this.router.navigate(['/']);
           this.loadingService.hide();
         },

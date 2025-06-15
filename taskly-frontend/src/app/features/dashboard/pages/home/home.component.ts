@@ -27,7 +27,6 @@ export class HomeComponent {
           this.user = user;
           this.rol = user.rol || 'user';
         } else {
-          console.error('No se encontró un usuario autenticado.');
           throw new Error('No se encontró un usuario autenticado');
         }
       })

@@ -25,7 +25,6 @@ Es una aplicacion web que permite gestionar tus propias tareas (Crear, editar o 
 - **Backends:** Desplegados en **Render**.
   - [Servicios Web Usuarios](https://taskly-euyg.onrender.com/api-docs)
   - [Servicios Web Tareas](https://taskly-1-t7vy.onrender.com/docs)
-- **DataBase:** Servicio de [SupaBase](https://supabase.com/)
 
 > [!WARNING]
 > Como son servidores gratuitos, el primer llamado al servidos despues de 7 minutos inactivo tendra una latencia alta en responder.
