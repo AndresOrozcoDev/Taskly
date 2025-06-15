@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const pool = require("../../configs/database");
+const db = require("../../configs/database");
 const { checkEmail, generatePassword } = require("./utilsController");
 
 const SECRET_KEY = process.env.JWT_SECRET || "dev";
@@ -19,22 +19,18 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const normalizedEmail = email.toLowerCase();
 
-    const query = `
-      INSERT INTO "users" (email, password, rol)
-      VALUES ($1, $2, $3)
-      RETURNING id, email, rol
-    `;
-
-    const values = [normalizedEmail, hashedPassword, rol];
-    const result = await pool.query(query, values);
-
-    res.status(201).json({
-      message: "Usuario registrado correctamente",
-      user: result.rows[0]
-    });
+    db.run(
+      `INSERT INTO user (email, password, rol) VALUES (?, ?, ?)`,
+      [normalizedEmail, hashedPassword, rol || "user"],
+      function (err) {
+        if (err) {
+          return res.status(400).json({ message: "Error al registrar usuario", error: err.message });
+        }
+        res.status(201).json({ message: "Usuario registrado correctamente" });
+      }
+    );
   } catch (error) {
-    console.error("Error al registrar usuario:", error);
-    res.status(500).json({ message: "Error al registrar usuario", error: error.message });
+    res.status(500).json({ message: "Error interno", error: error.message });
   }
 };
 
@@ -51,27 +47,26 @@ exports.login = async (req, res) => {
   const normalizedEmail = email.toLowerCase();
 
   try {
-    const result = await pool.query(`SELECT * FROM "users" WHERE email = $1`, [normalizedEmail]);
-    const user = result.rows[0];
+    db.get(`SELECT * FROM user WHERE email = ?`, [normalizedEmail], async (err, user) => {
 
-    if (!user) {
-      return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
-    }
+      if (err || !user) {
+        return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
+      }
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
-    }
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
+      }
 
-    const token = jwt.sign(
-      { id: user.id, email: user.email, rol: user.rol },
-      SECRET_KEY,
-      { expiresIn: "1h" }
-    );
+      const token = jwt.sign(
+        { id: user.id, email: user.email, rol: user.rol },
+        SECRET_KEY,
+        { expiresIn: "1h" }
+      );
 
-    res.json({ token });
+      res.json({ token });
+    });
   } catch (error) {
-    console.error("Error al iniciar sesión:", error);
     res.status(500).json({ message: "Error interno del servidor", error: error.message });
   }
 };
@@ -104,10 +99,16 @@ exports.forgetPassword = async (req, res) => {
     const newPassword = generatePassword();
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
-    await pool.query(
-      `UPDATE "users" SET password = $1 WHERE email = $2`,
-      [hashedPassword, normalizedEmail]
-    );
+    await new Promise((resolve, reject) => {
+      db.run(
+        `UPDATE user SET password = ? WHERE email = ?`,
+        [hashedPassword, normalizedEmail],
+        function (err) {
+          if (err) return reject(err);
+          resolve();
+        }
+      );
+    });
 
     return res.status(200).json({
       message: "Contraseña actualizada correctamente",
@@ -116,7 +117,6 @@ exports.forgetPassword = async (req, res) => {
     });
 
   } catch (error) {
-    console.error("Error al recuperar contraseña:", error);
     res.status(500).json({ message: "Error al recuperar la contraseña", error: error.message });
   }
 };

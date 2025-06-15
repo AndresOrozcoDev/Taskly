@@ -28,13 +28,6 @@ Crear el servidor
 npm run dev
 ```
 
-## Variables de entorno
-
-Requiere de los siguientes valores
-```bash
-    DATABASE_URL="<string_connection>"
-```
-
 ## Ejecucion con Docker
 
 Creación del contenedor
@@ -65,7 +58,7 @@ Cuando se realice un cambio estructural en la base de datos (agregar, editar o q
 npx knex migrate:make create_tables
 ```
 
-Para aplicar los cambios en la base de datos se requiere el siguiente comando:
+Para aplicar los cambios en la base de datos `.sqlite` se requiere el siguiente comando:
 
 ```bash
 npx knex migrate:latest --env production

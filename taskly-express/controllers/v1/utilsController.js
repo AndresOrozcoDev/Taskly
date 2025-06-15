@@ -1,16 +1,16 @@
-const pool = require("../../configs/database");
+const db = require("../../configs/database");
 
 /**
- * 🔍 Verifica si el correo existe en la base de datos (Supabase)
+ * 🔍 Verifica si el correo existe en la base de datos
  */
 exports.checkEmail = async (email) => {
-  try {
-    const result = await pool.query(`SELECT 1 FROM "user" WHERE email = $1 LIMIT 1`, [email]);
-    return result.rowCount > 0;
-  } catch (err) {
-    throw err;
-  }
-};
+  return new Promise((resolve, reject) => {
+    db.get(`SELECT * FROM user WHERE email = ?`, [email], (err, user) => {
+      if (err) return reject(err);
+      resolve(!!user);
+    });
+  });
+}
 
 /**
  * 🔐 Genera una nueva contraseña aleatoria de 8 caracteres

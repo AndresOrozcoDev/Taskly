@@ -119,6 +119,9 @@ Para asegurarse de que solo los usuarios registrados puedan crear tareas, FastAP
 > [!TIP]
 > En la url cambia la palabra **github** por **gitdiagram** para visualizar el diagrama de componentes y sus relaciones.
 
+> [!WARNING]
+> La IAS utilizada para la ejecucion de los proyectos backend es **Rendder**, en cada redeploy se borran los archivos, consecuencia de que los datos almacenados como **usuarios** seran borrados pero por prototipo se desea continuar hasta encontrar una solucion gratuita y viable.
+
 ## Autor
 
 **Andrés Orozco**
